@@ -15,7 +15,7 @@ export default function Home() {
 
           <div className="flex flex-col items-start justify-start">
             <h6 className="inline-block text-white text-sm mb-2">About me 🐱‍💻</h6>
-            <p className="text-slate-400 text-sm mb-3">I enjoy to create intuitive interfaces, clean/readable code. Keeping on top of the wave with all the popular development tools. Due to the fact that I love my job, I try to do everything as perfectly as possible.</p>
+            <p className="text-slate-400 text-sm mb-3">Frontend developer with more than 3+ years experience. I enjoy to create intuitive interfaces, clean/readable code. Keeping on top of the wave with all the popular development tools. Due to the fact that I love my job, I try to do everything as perfectly as possible.</p>
             <TechStack className='text-slate-300' technologies={userTechStack} />
           </div>
         </section>
