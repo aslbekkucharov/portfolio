@@ -15,7 +15,7 @@ export function User() {
                     <span className='text-sm text-slate-300 leading-none'>@aslbekkucharov</span>
                 </span>
                 <span className="text-slate-400 text-sm">Middle Frontend Developer</span>
-                <a href="/api/file" className="inline-flex items-center justify-start gap-1 rounded-md text-slate-400">
+                <a href="/aslbekkucharov.pdf" download="aslbekkucharov" className="inline-flex items-center justify-start gap-1 rounded-md text-slate-400">
                     <span className="text-white text-sm">Download resume</span>
                     <IonDocumentText width="16" height="16" className="text-white" />
                 </a>
