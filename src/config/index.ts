@@ -33,6 +33,6 @@ export const workExpirience: IWorkExperience[] = [
         company_link: '',
         company: 'Webtuning | HTML Layout Designer',
         tech_stack: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'jQuery'],
-        responsibility: 'Kirano - one of the leading web studios in Tashkent. Here I was engaged in layout of sites of different levels of complexity (online stores, corporate sites, landing pages, etc.). I optimized sites for faster loading, so that the user could see the web page faster and interact with it, as well as for Google Page Speed Insights.',
+        responsibility: 'Webtuning is a new web studio at that time. I learned a lot here, we worked with PHP code (layout of the template by design in Figma). I got acquainted with such concepts as FTP, Git, etc.',
     },
 ]
