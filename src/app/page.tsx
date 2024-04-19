@@ -1,8 +1,12 @@
+import Link from 'next/link'
+
 import { User } from '@/components/User'
 import { TechStack } from '@/components/TechStack'
 import { userTechStack, workExpirience } from '@/config'
+import { TelegramIcon } from '@/components/icons/TelegramIcon'
+import { LinkedInIcon } from '@/components/icons/LinkedInIcon'
 import { WorkExperience } from '@/components/WorkExperienceItem'
-import { LogosTelegram } from '@/components/icons/LogosTelegram'
+import { GithubIcon } from '@/components/icons/GithubIcon'
 
 export default function Home() {
 
@@ -17,8 +21,8 @@ export default function Home() {
           <div className="flex flex-col items-start justify-start">
             <h6 className="inline-block text-white text-sm mb-2">About me 💻</h6>
             <p className="text-slate-400 text-sm mb-3">
-              Frontend developer with more than 3+ years experience. I enjoy to create intuitive interfaces, clean/readable code. 
-              Keeping on top of the wave with all the popular development tools. 
+              Frontend developer with more than 3+ years experience. I enjoy to create intuitive interfaces, clean/readable code.
+              Keeping on top of the wave with all the popular development tools.
               Due to the fact that I love my job, I try to do everything as perfectly as possible.
             </p>
             <div className='inline-flex items-center gap-2 mb-6'>
@@ -30,10 +34,28 @@ export default function Home() {
           </div>
         </section>
 
-        <section className='flex flex-col gap-8'>
-          <h6 className="text-slate-400 text-sm">Work Experience ⚒</h6>
-
+        <section className='flex flex-col gap-8 mb-14'>
+          <h6 className="text-slate-400 text-md font-semibold">Work Experience ⚒</h6>
           {workExpirience.map((exp, i) => (<WorkExperience experience={exp} key={i} />))}
+        </section>
+
+        <section className='flex flex-col gap-5 justify-center items-center'>
+          <h6 className='text-white'>Reach me on:</h6>
+
+          <div className="flex items-center justify-center gap-4">
+            <Link href="https://t.me/aslbekkucharov" target="_blank" className='hover:opacity-60'>
+              <TelegramIcon width="32" height="32" className="text-white" />
+            </Link>
+
+            <Link href="https://www.linkedin.com/in/aslbekkucharov/" target="_blank" className='hover:opacity-60'>
+              <LinkedInIcon width="30" height="30" className="text-white" />
+            </Link>
+            
+            <Link href="https://github.com/aslbekkucharov/" target="_blank" className='hover:opacity-60'>
+              <GithubIcon width="34" height="34" className="text-white" />
+            </Link>
+          </div>
+
         </section>
       </div>
     </main>

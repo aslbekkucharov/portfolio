@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import IonDocumentText from '@/components/icons/IonDocumentText'
+import DocumentTextIcon from '@/components/icons/DocumentTextIcon'
 
 export function User() {
     return (
@@ -17,7 +17,7 @@ export function User() {
                 <span className="text-slate-400 text-sm">Middle Frontend Developer</span>
                 <a href="/aslbekkucharov.pdf" download="aslbekkucharov" className="inline-flex items-center justify-start gap-1 rounded-md text-slate-400">
                     <span className="text-white text-sm">Download resume</span>
-                    <IonDocumentText width="16" height="16" className="text-white" />
+                    <DocumentTextIcon width="16" height="16" className="text-white" />
                 </a>
             </div>
         </div>
