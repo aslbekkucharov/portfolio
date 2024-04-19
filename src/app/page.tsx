@@ -44,15 +44,15 @@ export default function Home() {
 
           <div className="flex items-center justify-center gap-4">
             <Link href="https://t.me/aslbekkucharov" target="_blank" className='hover:opacity-60'>
-              <TelegramIcon width="32" height="32" className="text-white" />
+              <TelegramIcon width="26" height="26" className="text-white" />
             </Link>
 
             <Link href="https://www.linkedin.com/in/aslbekkucharov/" target="_blank" className='hover:opacity-60'>
-              <LinkedInIcon width="30" height="30" className="text-white" />
+              <LinkedInIcon width="22" height="22" className="text-white" />
             </Link>
             
             <Link href="https://github.com/aslbekkucharov/" target="_blank" className='hover:opacity-60'>
-              <GithubIcon width="34" height="34" className="text-white" />
+              <GithubIcon width="28" height="28" className="text-white" />
             </Link>
           </div>
 
