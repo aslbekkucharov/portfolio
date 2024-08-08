@@ -3,10 +3,6 @@ import { Link } from "@nextui-org/link"
 
 export default async function Posts() {
 
-  fetch('http://localhost:3000/api/posts')
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-
   return (
     <div className="grid grid-cols-2 gap-3">
       <Card as={Link} href={'/' + 1} isPressable className="p-4 flex flex-col items-start gap-y-3">
