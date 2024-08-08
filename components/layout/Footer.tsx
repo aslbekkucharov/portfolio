@@ -1,4 +1,4 @@
-import Socials from "../common/Socials"
+import Socials from '../common/Socials'
 
 function Footer() {
     return (

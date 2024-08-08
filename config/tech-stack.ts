@@ -8,5 +8,5 @@ export const techStacks = [
     'NextJS',
     'Docker',
     'Git',
-    'TailwindCSS / Scss / Sass'
+    'TailwindCSS / Scss / Sass',
 ]

@@ -1,13 +1,13 @@
-import { SVGProps } from "react";
+import { SVGProps } from 'react'
 
 export type IconSvgProps = SVGProps<SVGSVGElement> & {
-  size?: number
+    size?: number
 }
 
 export type IWorkExperience = {
-  period: string
-  company: string
-  tech_stack: string[]
-  company_link: string
-  responsibility: string
+    period: string
+    company: string
+    tech_stack: string[]
+    company_link: string
+    responsibility: string
 }

@@ -1,13 +1,22 @@
-import { Image } from "@nextui-org/image"
-import { techStacks } from "@/config/tech-stack"
-import TechStack from "@/components/common/TechStack"
+import { Image } from '@nextui-org/image'
+
+import { techStacks } from '@/config/tech-stack'
+import TechStack from '@/components/common/TechStack'
 
 function UserTechnologyStack() {
     return (
         <div className="flex flex-col gap-3">
             <h4 className="flex items-center gap-2">
-                <span className="font-semibold text-lg">Professionally owned</span>
-                <Image src="/images/emojis/thunder.png" radius='none' width={20} height={20} alt="Thunder emoji by Apple" />
+                <span className="font-semibold text-lg">
+                    Professionally owned
+                </span>
+                <Image
+                    alt="Thunder emoji by Apple"
+                    height={20}
+                    radius="none"
+                    src="/images/emojis/thunder.png"
+                    width={20}
+                />
             </h4>
             <TechStack technologies={techStacks} />
         </div>
