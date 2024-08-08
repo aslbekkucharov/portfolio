@@ -10,7 +10,7 @@ type Props = {
 
 function UserCard({ className }: Props) {
     return (
-        <div className={clsx(className, "flex items-center gap-5 sm:gap-8")}>
+        <div className={clsx(className, "flex items-center flex-col sm:flex-row gap-5 sm:gap-8")}>
             <div className="flex items-center w-[100px] h-[100px] rounded-full overflow-hidden">
                 <Image
                     isBlurred={true}
@@ -19,11 +19,11 @@ function UserCard({ className }: Props) {
                     alt="Aslbek Kucharov's photo against the background of Registan Square"
                 />
             </div>
-            <div className="flex flex-col items-start gap-1">
-                <span className="flex items-start sm:items-center flex-col sm:flex-row sm:gap-2">
-                    <span className="text-white text-xl leading-1">Aslbek Kucharov</span>
-                    <span className="text-white hidden sm:inline-block">|</span>
-                    <span className="text-white text-xl leading-1">Software Developer</span>
+            <div className="flex flex-col items-center sm:items-start gap-1">
+                <span className="flex items-start sm:items-center gap-2">
+                    <span className="text-white  font-semibold sm:font-normal text-lg sm:text-xl leading-1">Aslbek Kucharov</span>
+                    <span className="text-white font-semibold sm:font-normal">|</span>
+                    <span className="text-white  font-semibold sm:font-normal text-lg sm:text-xl leading-1">Software Developer</span>
                 </span>
                 <span className="text-slate-300">@aslbekkucharov</span>
                 <Link
