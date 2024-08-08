@@ -35,7 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head />
       <body className={clsx("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="relative flex flex-col h-screen">
+          <div className="relative flex flex-col h-screen sm:px-8 px-4">
             <main className="container mx-auto max-w-screen-md w-full pt-16 flex-grow flex flex-col gap-10">
               <UserCard />
               <ContentTabs />
