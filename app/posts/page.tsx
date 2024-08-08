@@ -1,25 +1,24 @@
+import { Post } from '@/types'
+import { fetcher } from '@/tools/api'
 import { Card } from '@nextui-org/card'
 import { Link } from '@nextui-org/link'
+import Empty from '@/components/common/Empty'
+import clsx from 'clsx'
 
 export default async function Posts() {
+
+    const posts = await fetcher('/posts', { cache: 'no-cache' })
+
     return (
-        <div className="grid grid-cols-2 gap-3">
-            <Card
-                isPressable
-                as={Link}
-                className="p-4 flex flex-col items-start gap-y-3"
-                href={'/' + 1}
-            >
-                <span className="text-lg font-semibold text-left">
-                    Интерфейс
-                </span>
-                <span className="text-slate-400 text-left">
-                    Интерфейс предоставляет механизм для определения того, какие
-                    свойства и методы должен реализовывать объект, и,
-                    следовательно, является способом определения
-                    пользовательского типа.
-                </span>
-            </Card>
+        <div className={clsx({ 'grid grid-cols-2 gap-3': posts.length })}>
+            {
+                posts.length ? posts?.map((post: Post) => (
+                    <Card isPressable key={post.id} as={Link} className="p-4 flex flex-col items-start gap-y-3" href={'/posts' + post.id}>
+                        <span className="text-lg font-semibold text-left">{post.title}</span>
+                        <span className="text-slate-400 text-left">{post.content}</span>
+                    </Card>
+                )) : <Empty />
+            }
         </div>
     )
 }

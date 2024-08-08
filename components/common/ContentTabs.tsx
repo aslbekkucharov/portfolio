@@ -20,18 +20,16 @@ function ContentTabs() {
 
     const tabsTitle = {
         about: (
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 text-slate-700 dark:text-white group-data-[selected=true]:text-slate-700">
                 <PersonIcon size={20} viewBox="0 0 24 22" className='text-slate-700 dark:text-white' />
-                <span className="font-medium text-slate-700 dark:text-white">About</span>
+                <span className="font-medium">About</span>
             </div>
         ),
         posts: (
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 text-slate-700 dark:text-white group-data-[selected=true]:text-slate-700">
                 <NewsPaperIcon size={20} viewBox="0 0 24 24" />
                 <span className="font-medium">Posts</span>
-                <Chip size="sm" variant="faded">
-                    Soon
-                </Chip>
+                <Chip size="sm" variant="faded">Soon</Chip>
             </div>
         ),
     }
@@ -44,13 +42,7 @@ function ContentTabs() {
                 variant="underlined"
             >
                 <Tab key="/" as={Link} href="/" title={tabsTitle.about} />
-                <Tab
-                    key="/posts"
-                    isDisabled
-                    as={Link}
-                    href="/posts"
-                    title={tabsTitle.posts}
-                />
+                <Tab key="/posts" isDisabled as={Link} href="/posts" title={tabsTitle.posts} />
             </Tabs>
         </div>
     )

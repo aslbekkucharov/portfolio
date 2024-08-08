@@ -1,8 +1,7 @@
-import axios from 'axios'
+async function fetcher(endpoint: string, options: RequestInit) {
+    const fullEndpoint = process.env.API_BASE + endpoint
+    const response = await fetch(fullEndpoint, options)
+    return response.json()
+}
 
-const instance = axios.create({
-    timeout: 5000,
-    baseURL: process.env.API_BASE
-})
-
-export { instance as axiosInstance }
+export { fetcher }

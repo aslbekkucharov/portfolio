@@ -11,3 +11,10 @@ export type IWorkExperience = {
     company_link: string
     responsibility: string
 }
+
+export type Post = {
+    id: number
+    title: string
+    content: string
+    isActive: boolean
+}
