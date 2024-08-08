@@ -12,21 +12,21 @@ function ContentTabs() {
     const pathname = usePathname()
 
     const tabsClassnames = {
-        tabList: 'gap-6 w-full relative rounded-none p-0 border-b border-divider',
+        cursor: 'w-full bg-slate-700 dark:bg-white',
         tabContent: 'group-data-[selected=true]:text-white',
-        tab: 'max-w-fit px-0 h-12',
-        cursor: 'w-full bg-slate-700 dark:bg-white'
+        tab: 'max-w-fit px-0 h-12 data-[disabled=true]:text-white',
+        tabList: 'gap-6 w-full relative rounded-none p-0 border-b border-divider'
     }
 
     const tabsTitle = {
         about: (
-            <div className="flex items-center space-x-2 text-slate-700 dark:text-white group-data-[selected=true]:text-slate-700">
+            <div className="flex items-center space-x-2 text-slate-700 dark:text-white light:group-data-[selected=true]:text-slate-700">
                 <PersonIcon size={20} viewBox="0 0 24 22" className='text-slate-700 dark:text-white' />
                 <span className="font-medium">About</span>
             </div>
         ),
         posts: (
-            <div className="flex items-center space-x-2 text-slate-700 dark:text-white group-data-[selected=true]:text-slate-700">
+            <div className="flex items-center space-x-2 text-slate-700 dark:text-white light:group-data-[selected=true]:text-slate-700">
                 <NewsPaperIcon size={20} viewBox="0 0 24 24" />
                 <span className="font-medium">Posts</span>
                 <Chip size="sm" variant="faded">Soon</Chip>
