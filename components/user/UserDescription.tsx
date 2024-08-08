@@ -1,7 +1,7 @@
 function UserDescription() {
     return (
         <div className="flex flex-col gap-y-2">
-            <p className="text-slate-300">
+            <p className="text-slate-700 dark:text-slate-300">
                 Frontend developer with more than 3+ years experience. I enjoy
                 to create intuitive interfaces, clean/readable code. Keeping on
                 top of the wave with all the popular development tools. Due to

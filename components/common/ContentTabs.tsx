@@ -12,18 +12,17 @@ function ContentTabs() {
     const pathname = usePathname()
 
     const tabsClassnames = {
-        tabList:
-            'gap-6 w-full relative rounded-none p-0 border-b border-divider',
-        cursor: 'w-full bg-white',
-        tab: 'max-w-fit px-0 h-12',
+        tabList: 'gap-6 w-full relative rounded-none p-0 border-b border-divider',
         tabContent: 'group-data-[selected=true]:text-white',
+        tab: 'max-w-fit px-0 h-12',
+        cursor: 'w-full bg-slate-700 dark:bg-white'
     }
 
     const tabsTitle = {
         about: (
             <div className="flex items-center space-x-2">
-                <PersonIcon size={20} viewBox="0 0 24 22" />
-                <span className="font-medium">About</span>
+                <PersonIcon size={20} viewBox="0 0 24 22" className='text-slate-700 dark:text-white' />
+                <span className="font-medium text-slate-700 dark:text-white">About</span>
             </div>
         ),
         posts: (

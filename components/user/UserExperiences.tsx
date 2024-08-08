@@ -12,13 +12,13 @@ function UserExperiences({ className }: Props) {
     return (
         <div className={clsx(className, 'flex flex-col gap-5')}>
             <h4 className="flex items-center gap-2">
-                <span className="font-semibold text-lg">Work Experience</span>
+                <span className="text-slate-700 dark:text-white font-semibold text-lg">Work Experience</span>
                 <Image
-                    alt="USSR emoji by Apple"
+                    width={20}
                     height={20}
                     radius="none"
+                    alt="USSR emoji by Apple"
                     src="/images/emojis/ussr.png"
-                    width={20}
                 />
             </h4>
 

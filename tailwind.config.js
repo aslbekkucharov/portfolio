@@ -13,5 +13,21 @@ module.exports = {
   },
 
   darkMode: "class",
-  plugins: [nextui()],
+  plugins: [
+    nextui({
+      themes: {
+        light: {
+          colors: {
+            background: '#ffffff'
+          }
+        },
+
+        dark: {
+          colors: {
+            background: '#131313'
+          }
+        }
+      }
+    })
+  ],
 }

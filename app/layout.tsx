@@ -9,6 +9,7 @@ import { Providers } from '@/app/providers'
 import Footer from '@/components/layout/Footer'
 import UserCard from '@/components/user/UserCard'
 import ContentTabs from '@/components/common/ContentTabs'
+import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 
 export const metadata: Metadata = {
     title: {
@@ -21,21 +22,21 @@ export const metadata: Metadata = {
     }
 }
 
-// export const viewport: Viewport = {
-//   themeColor: [
-//     { media: "(prefers-color-scheme: dark)", color: "black" },
-//     { media: "(prefers-color-scheme: light)", color: "white" }
-//   ]
-// }
+export const viewport: Viewport = {
+    themeColor: [
+        { media: "(prefers-color-scheme: dark)", color: "black" },
+        { media: "(prefers-color-scheme: light)", color: "white" }
+    ]
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" suppressHydrationWarning>
             <head />
-            <body
-                className={clsx('min-h-screen bg-background font-sans antialiased', fontSans.variable)}>
+            <body className={clsx('font-sans antialiased', fontSans.variable)}>
                 <Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
                     <div className="relative flex flex-col h-screen sm:px-8 px-4">
+                        <ThemeSwitcher />
                         <main className="container mx-auto max-w-screen-md w-full pt-16 flex-grow flex flex-col gap-10">
                             <UserCard />
                             <ContentTabs />
