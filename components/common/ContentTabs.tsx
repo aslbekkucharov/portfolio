@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 
 import { NewsPaperIcon, PersonIcon } from '@/components/icons/index'
 import Link from 'next/link'
+import { Chip } from '@nextui-org/chip'
 
 function ContentTabs() {
 
@@ -26,6 +27,7 @@ function ContentTabs() {
     posts: <div className="flex items-center space-x-2">
       <NewsPaperIcon size={20} viewBox='0 0 24 24' />
       <span className='font-medium'>Posts</span>
+      <Chip size='sm' variant="faded">Soon</Chip>
     </div>
   }
 
@@ -33,7 +35,7 @@ function ContentTabs() {
     <div className="flex w-full flex-col">
       <Tabs selectedKey={pathname} variant='underlined' classNames={tabsClassnames}>
         <Tab as={Link} key='/' href="/" title={tabsTitle.about} />
-        <Tab as={Link} key="/posts" href="/posts" title={tabsTitle.posts} />
+        <Tab isDisabled as={Link} key="/posts" href="/posts" title={tabsTitle.posts} />
       </Tabs>
     </div>
   )
