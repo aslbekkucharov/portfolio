@@ -10,7 +10,7 @@ export default async function Posts() {
     const posts = await fetcher('/posts', { cache: 'no-cache' })
 
     return (
-        <div className={clsx({ 'grid grid-cols-2 gap-3': posts.length })}>
+        <div className={clsx({ 'grid md:grid-cols-2 gap-3': posts.length })}>
             {
                 posts.length ? posts?.map((post: Post) => (
                     <Card isPressable key={post.id} as={Link} className="p-4 flex flex-col items-start gap-y-3" href={'/posts' + post.id}>

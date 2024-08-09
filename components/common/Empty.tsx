@@ -1,10 +1,9 @@
-import { EmptyIcon } from "@/components/icons/index"
+import { Image } from "@nextui-org/image"
 
 function Empty() {
     return (
         <div className="flex flex-col items-center">
-            <EmptyIcon size={150} viewBox='0 0 200 200' className='text-slate-300' />
-            <h4 className="font-medium text-lg text-slate-700 dark:text-white">There is not content :(</h4>
+            <h4 className="text-lg text-slate-700 dark:text-slate-400">There is no content...</h4>
         </div>
     )
 }
