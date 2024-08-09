@@ -21,7 +21,7 @@ function ContentTabs() {
     const tabsTitle = {
         about: (
             <div className="flex items-center space-x-2 text-slate-700 dark:text-white light:group-data-[selected=true]:text-slate-700">
-                <PersonIcon size={20} viewBox="0 0 24 22" className='text-slate-700 dark:text-white' />
+                <PersonIcon size={20} viewBox="0 0 24 24" className='text-slate-700 dark:text-white' />
                 <span className="font-medium">About</span>
             </div>
         ),
