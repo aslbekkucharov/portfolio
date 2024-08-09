@@ -22,7 +22,7 @@ export function ThemeSwitcher({ className, classNames }: ThemeSwitchProps) {
     const { Component, slots, isSelected, getBaseProps, getInputProps, getWrapperProps } = useSwitch({ onChange, isSelected: theme === "light" || isSSR })
 
     return (
-        <Component {...getBaseProps({ className: clsx("px-px transition-opacity hover:opacity-80 cursor-pointer", className, classNames?.base) })}>
+        <Component {...getBaseProps({ className: clsx("px-px transition-opacity hover:opacity-80 cursor-pointer z-10", className, classNames?.base) })}>
             <VisuallyHidden>
                 <input {...getInputProps()} />
             </VisuallyHidden>

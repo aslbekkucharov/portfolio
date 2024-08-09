@@ -15,6 +15,7 @@ export type IWorkExperience = {
 export type Post = {
     id: number
     title: string
+    excerpt: string
     content: string
     isActive: boolean
 }
