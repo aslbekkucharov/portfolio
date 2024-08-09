@@ -7,7 +7,8 @@ import clsx from 'clsx'
 
 export default async function Posts() {
 
-    const posts = await fetcher('/posts', { cache: 'no-cache' })
+    // const posts = await fetcher('/posts', { cache: 'no-cache' }) || []
+    const posts: Post[] = []
 
     return (
         <div className={clsx({ 'grid md:grid-cols-2 gap-3': posts.length })}>
