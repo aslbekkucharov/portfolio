@@ -4,6 +4,8 @@
 
 html,
 div,
+code,
+pre,
 svg {
     transition: background-color 0.2s linear;
 }
@@ -18,4 +20,21 @@ p,
 span,
 svg {
     transition: color 0.2s linear;
+}
+
+pre {
+    padding: 15px;
+    border-radius: 10px;
+    @apply dark:bg-[#1d1d1d] bg-slate-50 overflow-x-auto
+}
+
+pre code {
+    padding: 0;
+    background-color: transparent !important;
+}
+
+code {
+    padding: 1.5px 4px;
+    border-radius: 5px;
+    @apply dark:bg-[#272727] bg-slate-100
 }
