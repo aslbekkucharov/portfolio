@@ -7,7 +7,7 @@ export const workExpirience: IWorkExperience[] = [
         company: 'Bulavka.uz | Frontend Developer',
         tech_stack: ['NuxtJS', 'VueJS', 'AngularJS', 'NodeJS', 'TailwindCSS'],
         responsibility:
-            'Bulavka.uz - one of the major online marketplaces in Uzbekistan. In this company, I hold the position of a mid/senior Frontend developer. In this company I keep the website up and running, implement new features, fix bugs. I am also doing development on the admin panel and business cabinet for product suppliers. So far I have refactored a lot of code and optimized the business cabinet and administrative panel.',
+            'Bulavka.uz - one of the major online marketplaces in Uzbekistan. In this company, I hold the position of a Frontend developer. In this company I keep the website up and running, implement new features, fix bugs. I am also doing development on the admin panel and business cabinet for product suppliers. So far I have refactored a lot of code and optimized the business cabinet and administrative panel.',
     },
     {
         period: '01.05.2021 - 04.04.2022',

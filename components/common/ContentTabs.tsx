@@ -36,13 +36,9 @@ function ContentTabs() {
 
     return (
         <div className="flex w-full flex-col">
-            <Tabs
-                classNames={tabsClassnames}
-                selectedKey={pathname}
-                variant="underlined"
-            >
+            <Tabs classNames={tabsClassnames} selectedKey={pathname} variant="underlined">
                 <Tab key="/" as={Link} href="/" title={tabsTitle.about} />
-                <Tab key="/posts" isDisabled as={Link} href="/posts" title={tabsTitle.posts} />
+                <Tab key="/posts" as={Link} href="/posts" title={tabsTitle.posts} />
             </Tabs>
         </div>
     )
