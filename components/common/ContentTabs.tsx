@@ -29,7 +29,6 @@ function ContentTabs() {
             <div className="flex items-center space-x-2 text-slate-700 dark:text-white light:group-data-[selected=true]:text-slate-700">
                 <NewsPaperIcon size={20} viewBox="0 0 24 24" />
                 <span className="font-medium">Posts</span>
-                <Chip size="sm" variant="faded">Soon</Chip>
             </div>
         ),
     }
