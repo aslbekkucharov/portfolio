@@ -1,5 +1,3 @@
 export default function PostSingle() {
-    return (
-        <div>PostSingle</div>
-    )
+    return <div>PostSingle</div>
 }

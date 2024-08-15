@@ -1,8 +1,8 @@
-import { Skeleton } from "@nextui-org/skeleton"
+import { Skeleton } from '@nextui-org/skeleton'
 
 export default function PostSingleSkeleton() {
     return (
-        <div className='flex flex-col'>
+        <div className="flex flex-col">
             <Skeleton className="mb-8 h-8 w-full rounded-large" />
             <div className="flex flex-wrap gap-5">
                 <Skeleton className="h-4 w-3/5 rounded-large" />

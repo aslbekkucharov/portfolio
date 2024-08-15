@@ -10,7 +10,12 @@ type Props = {
 
 function UserCard({ className }: Props) {
     return (
-        <div className={clsx(className, 'flex items-center flex-col sm:flex-row gap-5 sm:gap-8')}>
+        <div
+            className={clsx(
+                className,
+                'flex items-center flex-col sm:flex-row gap-5 sm:gap-8',
+            )}
+        >
             <div className="flex items-center w-[100px] h-[100px] rounded-full overflow-hidden">
                 <Image
                     alt="Aslbek Kucharov's photo against the background of Registan Square"
@@ -31,16 +36,26 @@ function UserCard({ className }: Props) {
                         Software Developer
                     </span>
                 </span>
-                <span className="text-slate-500 dark:text-slate-300">@aslbekkucharov</span>
+                <span className="text-slate-500 dark:text-slate-300">
+                    @aslbekkucharov
+                </span>
                 <Link
                     showAnchorIcon
-                    anchorIcon={<DownloadIcon size={18} viewBox="0 0 22 22" className='text-slate-700 dark:text-white' />}
+                    anchorIcon={
+                        <DownloadIcon
+                            className="text-slate-700 dark:text-white"
+                            size={18}
+                            viewBox="0 0 22 22"
+                        />
+                    }
                     className="inline-flex items-center gap-2"
                     color="foreground"
                     download="aslbekkucharov-resume"
                     href="/aslbekkucharov.pdf"
                 >
-                    <span className='text-slate-700 dark:text-white'>Download resume</span>
+                    <span className="text-slate-700 dark:text-white">
+                        Download resume
+                    </span>
                 </Link>
             </div>
         </div>
