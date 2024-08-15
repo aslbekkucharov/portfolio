@@ -22,6 +22,15 @@ svg {
     transition: color 0.2s linear;
 }
 
+ol {
+    padding-left: 20px;
+    list-style: decimal;
+}
+
+ul {
+    list-style: disc;
+}
+
 pre {
     padding: 15px;
     border-radius: 10px;
