@@ -13,8 +13,7 @@ import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 
 export const metadata: Metadata = {
     title: {
-        default: siteConfig.name,
-        template: `%s - ${siteConfig.name}`
+        default: siteConfig.name
     },
     description: siteConfig.description,
     icons: {

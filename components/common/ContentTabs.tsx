@@ -1,15 +1,14 @@
 'use client'
 
 import React from 'react'
+import Link from 'next/link'
 import { Tabs, Tab } from '@nextui-org/tabs'
 import { usePathname } from 'next/navigation'
-import Link from 'next/link'
-import { Chip } from '@nextui-org/chip'
 
 import { NewsPaperIcon, PersonIcon } from '@/components/icons/index'
 
 function ContentTabs() {
-    const pathname = usePathname()
+    let pathname = usePathname()
 
     const tabsClassnames = {
         cursor: 'w-full bg-slate-700 dark:bg-white',
@@ -30,7 +29,7 @@ function ContentTabs() {
                 <NewsPaperIcon size={20} viewBox="0 0 24 24" />
                 <span className="font-medium">Posts</span>
             </div>
-        ),
+        )
     }
 
     return (

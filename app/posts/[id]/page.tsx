@@ -2,8 +2,24 @@ import React from 'react'
 
 import { Post } from '@/types'
 import { fetcher } from '@/tools/api'
+import Head from 'next/head'
+import { Metadata } from 'next'
 
-export default async function PostSingle({ params }: { params: { id: string } }) {
+type Props = {
+    params: { id: string }
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const id = params.id
+    const post: Post = await fetcher(`/posts/${id}`)
+
+    return {
+        title: post.title,
+        description: post.excerpt
+    }
+}
+
+export default async function PostSingle({ params }: Props) {
     const post: Post = await fetcher(`/posts/${params.id}`, { cache: 'no-cache' })
 
     return (
