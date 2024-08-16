@@ -2,23 +2,32 @@ import { IWorkExperience } from '@/types'
 
 export const workExpirience: IWorkExperience[] = [
     {
+        period: '12.06.2024 - Present',
+        company_link: 'https://muk.group',
+        company: 'Muk Computers | Frontend Developer',
+        tech_stack: ['JavaScript', 'Tailwind', 'jQuery', 'PHP', 'Vue.js', 'React.js', 'Next.js', 'Node.js', 'Nest.js'],
+        responsibility: `
+            <p>Muk International - international project value-added IT-distributor</p>
+            <p>Soon....</p>`
+    },
+    {
         period: '04.04.2022 - 01.04.2024',
         company_link: 'https://bulavka.uz',
         company: 'Bulavka.uz | Frontend Developer',
         tech_stack: ['NuxtJS', 'VueJS', 'AngularJS', 'NodeJS', 'TailwindCSS'],
         responsibility: `
-            <p>Bulavka.uz - one of the major online marketplaces in Uzbekistan. In this company, I hold the position of a Frontend developer. In this company, I keep the website up and running, implement new features, fix bugs. Also:</p>
+            <p> Bulavka.uz - one of the major online marketplaces in Uzbekistan.In this company, I hold the position of a Frontend developer.In this company, I keep the website up and running, implement new features, fix bugs.Also:</p>
             <p>&nbsp;</p>
             <ul>
-                <li>Led the redesign of key pages such as the cart, product, and checkout pages. These pages were initially written in PHP, which complicated the user experience. Successfully migrated these pages to Vue.js/Nuxt.js, enhancing performance and usability.</li>
-                <li>Refactored code in the administrative and business sections of the application, optimizing both hardware performance and user experience. This included managing frequent server requests, organizing image uploads, implementing dynamic component loading, and creating various components for streamlined interactions with the tax authorities.</li>
-                <li>Oversaw the migration from Angular.js to Vue.js for the administrative part of the application. Recognizing Angular.js as an outdated and complex technology, I proposed and executed a gradual migration to Vue.js, achieving approximately 70% completion before my departure.</li>
-                <li>Managed the migration of the supplier business dashboard from Quasar 1 to Quasar 2 and from Vue 2 to Vue 3, ensuring improved performance and maintainability.</li>
-                <li>Optimized the user interface for the business cabinet, enhancing the supplier experience through improved loading times and dynamic content updates.</li>
-                <li>Collaborated closely with backend developers and UI/UX designers to ensure seamless integration of new features and consistent user experiences.</li>
-                <li>Conducted thorough code reviews and implemented best practices, significantly reducing bugs and improving code maintainability.</li>
-                <li>Provided mentorship and guidance to junior developers, fostering a culture of continuous improvement and professional growth within the team.</li>
-                <li>Successfully led multiple sprints focused on enhancing the e-commerce platform, contributing to a 20% increase in user retention and a 15% boost in sales.</li>
+                <li>Led the redesign of key pages such as the cart, product, and checkout pages.These pages were initially written in PHP, which complicated the user experience.Successfully migrated these pages to Vue.js / Nuxt.js, enhancing performance and usability.</li>
+                <li> Refactored code in the administrative and business sections of the application, optimizing both hardware performance and user experience.This included managing frequent server requests, organizing image uploads, implementing dynamic component loading, and creating various components for streamlined interactions with the tax authorities.</li>
+                <li> Oversaw the migration from Angular.js to Vue.js for the administrative part of the application.Recognizing Angular.js as an outdated and complex technology, I proposed and executed a gradual migration to Vue.js, achieving approximately 70 % completion before my departure.</li>
+                <li> Managed the migration of the supplier business dashboard from Quasar 1 to Quasar 2 and from Vue 2 to Vue 3, ensuring improved performance and maintainability.</li>
+                <li> Optimized the user interface for the business cabinet, enhancing the supplier experience through improved loading times and dynamic content updates.</li>
+                <li> Collaborated closely with backend developers and UI / UX designers to ensure seamless integration of new features and consistent user experiences.</li>
+                <li> Conducted thorough code reviews and implemented best practices, significantly reducing bugs and improving code maintainability.</li>
+                <li> Provided mentorship and guidance to junior developers, fostering a culture of continuous improvement and professional growth within the team.</li>
+                <li> Successfully led multiple sprints focused on enhancing the e - commerce platform, contributing to a 20 % increase in user retention and a 15 % boost in sales.</li>
             </ul>`,
     },
     {
