@@ -22,7 +22,8 @@ svg {
     transition: color 0.2s linear;
 }
 
-ol {
+ol,
+ul {
     padding-left: 20px;
     list-style: decimal;
 }
