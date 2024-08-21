@@ -8,7 +8,7 @@ export const workExpirience: IWorkExperience[] = [
         tech_stack: ['JavaScript', 'Tailwind', 'jQuery', 'PHP', 'Vue.js', 'React.js', 'Next.js', 'Node.js', 'Nest.js'],
         responsibility: `
             <p>Muk International - international project value-added IT-distributor</p>
-            <p>Soon....</p>`
+            <p>Description will appear soon....</p>`
     },
     {
         period: '04.04.2022 - 01.04.2024',
