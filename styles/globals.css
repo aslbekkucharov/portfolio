@@ -49,3 +49,7 @@ code {
     border-radius: 5px;
     @apply dark:bg-[#272727] bg-slate-100
 }
+
+body::-webkit-scrollbar {
+    display: none;
+}
