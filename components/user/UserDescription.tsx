@@ -6,7 +6,7 @@ function UserDescription() {
             </p>
             <p className="text-[#28a8e9] font-medium">
                 I have been a member of the Telegram support team for more than 3 years.
-                (Google → Telegram Suppoer Force)
+                (Google → Telegram Support Force)
             </p>
         </div>
     )
