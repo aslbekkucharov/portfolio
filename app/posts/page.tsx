@@ -9,8 +9,7 @@ import Empty from '@/components/common/Empty'
 type PartialPost = Omit<Post, 'content'>
 
 export default async function Posts() {
-    const posts: PartialPost[] =
-        (await fetcher('/posts', { cache: 'no-cache' })) || []
+    const posts: PartialPost[] = /* (await fetcher('/posts', { cache: 'no-cache' })) || */ []
 
     return (
         <div className={clsx({ 'grid md:grid-cols-2 gap-3': posts.length })}>
