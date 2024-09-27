@@ -6,8 +6,8 @@ import { Button } from "@nextui-org/button"
 export default function Auth() {
 
     return (
-        <section className="h-full grid grid-cols-2">
-            <div className="h-full flex flex-col items-center justify-center px-10">
+        <section className="h-full lg:grid grid-cols-2">
+            <div className="h-full flex flex-col items-center justify-center px-4 sm:px-10">
 
                 <div className="max-w-[425px] w-full">
                     <div className="flex flex-col gap-2 mb-8 w-full">
@@ -46,7 +46,7 @@ export default function Auth() {
                 </div>
             </div>
 
-            <div className="max-h-full overflow-hidden">
+            <div className="max-h-full overflow-hidden hidden lg:block">
                 <Image src="https://rb.gy/pjw6t3" radius="none" />
             </div>
         </section>
