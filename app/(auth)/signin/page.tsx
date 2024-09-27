@@ -22,7 +22,7 @@ export default function Auth() {
                             />
                         </h2>
                         <p className="text-lg text-slate-500 dark:text-slate-400">
-                            <span>Log in to your profile to create or manage your online CV. Still don't have an account?</span>
+                            <span>Log in to your profile to create or manage your online CV. Still don&apos;t have an account?</span>
                             <Link href="/signup" className="ml-1 text-blue-500">Sign up</Link>
                         </p>
                     </div>
