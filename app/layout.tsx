@@ -40,18 +40,8 @@ export default function RootLayout({
         <html suppressHydrationWarning lang="en">
             <head />
             <body className={clsx('font-sans antialiased', fontSans.variable)}>
-                <Providers
-                    themeProps={{ attribute: 'class', defaultTheme: 'dark' }}
-                >
-                    <div className="relative flex flex-col h-screen sm:px-8 px-4">
-                        <ThemeSwitcher />
-                        <main className="container mx-auto max-w-screen-md w-full pt-16 flex-grow flex flex-col gap-10">
-                            <UserCard />
-                            <ContentTabs />
-                            {children}
-                        </main>
-                        <Footer />
-                    </div>
+                <Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
+                    {children}
                 </Providers>
                 <Suspense>
                     <Metrika />

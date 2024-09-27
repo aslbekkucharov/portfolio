@@ -1,7 +1,5 @@
 'use client'
 
-import { useEffect } from 'react'
-
 type Props = {
     error: Error,
     reset: () => void

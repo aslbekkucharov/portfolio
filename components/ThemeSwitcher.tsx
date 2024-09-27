@@ -33,7 +33,7 @@ export function ThemeSwitcher({ className, classNames }: ThemeSwitchProps) {
         <Component
             {...getBaseProps({
                 className: clsx(
-                    'px-px transition-opacity hover:opacity-80 cursor-pointer z-10',
+                    'px-px transition-opacity hover:opacity-80 cursor-pointer z-10 fixed bottom-[8%] right-[4%]',
                     className,
                     classNames?.base,
                 ),
@@ -47,7 +47,7 @@ export function ThemeSwitcher({ className, classNames }: ThemeSwitchProps) {
                 className={slots.wrapper({
                     class: clsx(
                         classNames?.wrapper,
-                        'mr-0 inline-flex items-center justify-center fixed bottom-[8%] right-[4%] w-10 h-10 rounded-full !bg-slate-700 dark:bg-slate-800',
+                        'mr-0 inline-flex items-center justify-center w-10 h-10 rounded-full !bg-slate-700 dark:bg-slate-800',
                     ),
                 })}
             >
