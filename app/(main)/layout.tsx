@@ -11,14 +11,9 @@ import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 import { Metrika } from '@/components/analytics/y-metrika'
 
 export const metadata: Metadata = {
-    title: {
-        default: siteConfig.name,
-        template: `%s`,
-    },
+    icons: { icon: '/favicon.ico' },
     description: siteConfig.description,
-    icons: {
-        icon: '/favicon.ico',
-    },
+    title: { default: siteConfig.name, template: `%s` },
 }
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {

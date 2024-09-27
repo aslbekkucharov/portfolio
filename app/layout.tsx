@@ -37,9 +37,9 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <html suppressHydrationWarning lang="en">
+        <html suppressHydrationWarning lang="en" className='min-h-screen'>
             <head />
-            <body className={clsx('font-sans antialiased', fontSans.variable)}>
+            <body className={clsx('font-sans antialiased min-h-screen', fontSans.variable)}>
                 <Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
                     {children}
                 </Providers>

@@ -53,3 +53,9 @@ code {
 body::-webkit-scrollbar {
     display: none;
 }
+
+[data-overlay-container] {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
