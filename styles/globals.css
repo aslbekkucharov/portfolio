@@ -7,6 +7,7 @@ div,
 code,
 pre,
 svg {
+    scroll-behavior: smooth;
     transition: background-color 0.2s linear;
 }
 
@@ -50,7 +51,7 @@ code {
     @apply dark:bg-[#272727] bg-slate-100
 }
 
-body::-webkit-scrollbar {
+body::-webkit-scrollbar, .tiptap::-webkit-scrollbar {
     display: none;
 }
 

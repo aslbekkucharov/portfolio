@@ -341,3 +341,69 @@ export const ChewronRight: React.FC<IconSvgProps> = ({
         <path fill="currentColor" d="m9.55 12l7.35 7.35q.375.375.363.875t-.388.875t-.875.375t-.875-.375l-7.7-7.675q-.3-.3-.45-.675t-.15-.75t.15-.75t.45-.675l7.7-7.7q.375-.375.888-.363t.887.388t.375.875t-.375.875z" />
     </svg>
 )
+
+export const Plus: React.FC<IconSvgProps> = ({
+    size,
+    height,
+    width,
+    ...props
+}) => (
+    <svg height={size || height} width={size || width} xmlns="http://www.w3.org/2000/svg" {...props} >
+        <path fill="currentColor" d="M11 13H6q-.425 0-.712-.288T5 12t.288-.712T6 11h5V6q0-.425.288-.712T12 5t.713.288T13 6v5h5q.425 0 .713.288T19 12t-.288.713T18 13h-5v5q0 .425-.288.713T12 19t-.712-.288T11 18z" />
+    </svg>
+)
+
+export const Quote: React.FC<IconSvgProps> = ({
+    size,
+    height,
+    width,
+    ...props
+}) => (
+    <svg height={size || height} width={size || width} xmlns="http://www.w3.org/2000/svg" {...props} >
+        <path fill="currentColor" d="M9.646 11.146c1.387-1.386 2.008-2.76 2.24-4.352A2 2 0 1 1 13 5c-.001 2.592-.528 4.734-2.647 6.854a.5.5 0 0 1-.708-.708m-6 0c1.387-1.386 2.009-2.76 2.24-4.352A2 2 0 1 1 7 5c-.001 2.592-.528 4.734-2.647 6.854a.5.5 0 0 1-.708-.708" />
+    </svg>
+)
+
+export const TextBold: React.FC<IconSvgProps> = ({
+    size,
+    height,
+    width,
+    ...props
+}) => (
+    <svg height={size || height} width={size || width} xmlns="http://www.w3.org/2000/svg" {...props} >
+        <path fill="currentColor" d="M4 3.3C4 2.6 4.6 2 5.3 2h3.3c2 0 3.5 1.7 3.5 3.5c0 .7-.2 1.4-.6 1.9c.7.6 1.2 1.6 1.2 2.8c0 2.4-2 3.7-3.7 3.7H5.3c-.7.1-1.3-.5-1.3-1.2zm2.6 1.3v1.9h2c.5 0 1-.4 1-1c0-.5-.4-1-1-1h-2zm0 4.5v2.4H9c.6 0 1.2-.5 1.2-1.2S9.6 9.1 9 9.1z" />
+    </svg>
+)
+
+export const BulletList: React.FC<IconSvgProps> = ({
+    size,
+    height,
+    width,
+    ...props
+}) => (
+    <svg height={size || height} width={size || width} xmlns="http://www.w3.org/2000/svg" {...props} >
+        <path fill="currentColor" d="M8 4.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-6-1A1.5 1.5 0 0 1 3.5 14h1A1.5 1.5 0 0 1 6 15.5v1A1.5 1.5 0 0 1 4.5 18h-1A1.5 1.5 0 0 1 2 16.5zm0-6A1.5 1.5 0 0 1 3.5 8h1A1.5 1.5 0 0 1 6 9.5v1A1.5 1.5 0 0 1 4.5 12h-1A1.5 1.5 0 0 1 2 10.5zm0-6A1.5 1.5 0 0 1 3.5 2h1A1.5 1.5 0 0 1 6 3.5v1A1.5 1.5 0 0 1 4.5 6h-1A1.5 1.5 0 0 1 2 4.5z" />
+    </svg>
+)
+
+export const CodeBlock: React.FC<IconSvgProps> = ({
+    size,
+    height,
+    width,
+    ...props
+}) => (
+    <svg height={size || height} width={size || width} xmlns="http://www.w3.org/2000/svg" {...props} >
+        <path fill="currentColor" d="M4.75 2A2.25 2.25 0 0 0 2.5 4.25v1.755c0 .546-.012.755-.071.904c-.032.079-.105.216-.514.42a.75.75 0 0 0 0 1.342c.409.204.482.341.514.42c.06.15.071.36.071.909v1.75A2.25 2.25 0 0 0 4.75 14a.75.75 0 0 0 0-1.5a.75.75 0 0 1-.75-.75V9.927c0-.436.001-.943-.179-1.393q-.12-.3-.323-.534q.203-.234.323-.533c.18-.45.18-.956.18-1.39L4 4.25a.75.75 0 0 1 .75-.75a.75.75 0 0 0 0-1.5m6.5 0a2.25 2.25 0 0 1 2.25 2.25v1.755c0 .546.011.755.071.904c.032.079.105.216.514.42a.75.75 0 0 1 0 1.342c-.409.204-.482.341-.514.42c-.06.15-.071.36-.071.909v1.75A2.25 2.25 0 0 1 11.25 14a.75.75 0 0 1 0-1.5a.75.75 0 0 0 .75-.75V9.927c0-.436-.001-.943.179-1.393q.12-.3.323-.534a1.9 1.9 0 0 1-.323-.533c-.18-.45-.18-.956-.18-1.39L12 4.25a.75.75 0 0 0-.75-.75a.75.75 0 0 1 0-1.5" />
+    </svg>
+)
+
+export const HeadingFirstLevel: React.FC<IconSvgProps> = ({
+    size,
+    height,
+    width,
+    ...props
+}) => (
+    <svg height={size || height} width={size || width} xmlns="http://www.w3.org/2000/svg" {...props} >
+        <path fill="currentColor" d="M2.002 2.499a.5.5 0 1 0-1 0v5.005a.5.5 0 1 0 1 0V5.5h3v2a.5.5 0 0 0 1 0v-5a.5.5 0 1 0-1 0v2.001h-3zM1 10.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5m0 2.998a.5.5 0 0 1 .5-.5h13a.5.5 0 1 1 0 1h-13a.5.5 0 0 1-.5-.5M10 2.5a.5.5 0 0 0-.947-.224c-.165.33-.42.59-.647.771a3 3 0 0 1-.36.246l-.019.01h-.002a.5.5 0 0 0 .449.894l.002-.001l.004-.002q.087-.045.169-.096c.092-.057.214-.138.351-.245V7.5a.5.5 0 0 0 1 0z" />
+    </svg>
+)

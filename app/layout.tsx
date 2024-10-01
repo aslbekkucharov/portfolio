@@ -1,3 +1,4 @@
+import '@/styles/editor.css'
 import '@/styles/globals.css'
 
 import clsx from 'clsx'
