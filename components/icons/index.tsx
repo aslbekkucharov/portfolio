@@ -386,6 +386,17 @@ export const BulletList: React.FC<IconSvgProps> = ({
     </svg>
 )
 
+export const OrderedList: React.FC<IconSvgProps> = ({
+    size,
+    height,
+    width,
+    ...props
+}) => (
+    <svg height={size || height} width={size || width} xmlns="http://www.w3.org/2000/svg" {...props} >
+        <path fill="currentColor" d="M3 22v-1.5h2.5v-.75H4v-1.5h1.5v-.75H3V16h3q.425 0 .713.288T7 17v1q0 .425-.288.713T6 19q.425 0 .713.288T7 20v1q0 .425-.288.713T6 22zm0-7v-2.75q0-.425.288-.712T4 11.25h1.5v-.75H3V9h3q.425 0 .713.288T7 10v1.75q0 .425-.288.713T6 12.75H4.5v.75H7V15zm1.5-7V3.5H3V2h3v6zM9 19v-2h12v2zm0-6v-2h12v2zm0-6V5h12v2z" />
+    </svg>
+)
+
 export const CodeBlock: React.FC<IconSvgProps> = ({
     size,
     height,
@@ -405,5 +416,27 @@ export const HeadingFirstLevel: React.FC<IconSvgProps> = ({
 }) => (
     <svg height={size || height} width={size || width} xmlns="http://www.w3.org/2000/svg" {...props} >
         <path fill="currentColor" d="M2.002 2.499a.5.5 0 1 0-1 0v5.005a.5.5 0 1 0 1 0V5.5h3v2a.5.5 0 0 0 1 0v-5a.5.5 0 1 0-1 0v2.001h-3zM1 10.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5m0 2.998a.5.5 0 0 1 .5-.5h13a.5.5 0 1 1 0 1h-13a.5.5 0 0 1-.5-.5M10 2.5a.5.5 0 0 0-.947-.224c-.165.33-.42.59-.647.771a3 3 0 0 1-.36.246l-.019.01h-.002a.5.5 0 0 0 .449.894l.002-.001l.004-.002q.087-.045.169-.096c.092-.057.214-.138.351-.245V7.5a.5.5 0 0 0 1 0z" />
+    </svg>
+)
+
+export const Italic: React.FC<IconSvgProps> = ({
+    size,
+    height,
+    width,
+    ...props
+}) => (
+    <svg height={size || height} width={size || width} xmlns="http://www.w3.org/2000/svg" {...props} >
+        <path fill="currentColor" d="M10 5.5c0 .83.67 1.5 1.5 1.5h.71l-3.42 8H7.5c-.83 0-1.5.67-1.5 1.5S6.67 18 7.5 18h5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5h-.71l3.42-8h1.29c.83 0 1.5-.67 1.5-1.5S17.33 4 16.5 4h-5c-.83 0-1.5.67-1.5 1.5" />
+    </svg>
+)
+
+export const TextStrike: React.FC<IconSvgProps> = ({
+    size,
+    height,
+    width,
+    ...props
+}) => (
+    <svg height={size || height} width={size || width} xmlns="http://www.w3.org/2000/svg" {...props} >
+        <path fill="currentColor" d="M7.24 8.75c-.26-.48-.39-1.03-.39-1.67c0-.61.13-1.16.4-1.67q.39-.75 1.11-1.29a5.7 5.7 0 0 1 1.7-.83c.66-.19 1.39-.29 2.18-.29c.81 0 1.54.11 2.21.34c.66.22 1.23.54 1.69.94c.47.4.83.88 1.08 1.43s.38 1.15.38 1.81h-3.01c0-.31-.05-.59-.15-.85c-.09-.27-.24-.49-.44-.68s-.45-.33-.75-.44c-.3-.1-.66-.16-1.06-.16c-.39 0-.74.04-1.03.13s-.53.21-.72.36c-.19.16-.34.34-.44.55q-.15.315-.15.66c0 .48.25.88.74 1.21c.38.25.77.48 1.41.7H7.39c-.05-.08-.11-.17-.15-.25M21 12v-2H3v2h9.62c.18.07.4.14.55.2q.555.255.87.51c.315.255.35.36.43.57c.07.2.11.43.11.69c0 .23-.05.45-.14.66c-.09.2-.23.38-.42.53s-.42.26-.71.35c-.29.08-.63.13-1.01.13c-.43 0-.83-.04-1.18-.13s-.66-.23-.91-.42s-.45-.44-.59-.75s-.25-.76-.25-1.21H6.4c0 .55.08 1.13.24 1.58s.37.85.65 1.21c.28.35.6.66.98.92c.37.26.78.48 1.22.65q.66.255 1.38.39c.48.08.96.13 1.44.13c.8 0 1.53-.09 2.18-.28s1.21-.45 1.67-.79s.82-.77 1.07-1.27s.38-1.07.38-1.71c0-.6-.1-1.14-.31-1.61c-.05-.11-.11-.23-.17-.33H21z" />
     </svg>
 )

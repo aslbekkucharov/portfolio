@@ -10,7 +10,7 @@ import { ChewronRight } from "@/components/icons"
 
 export default function ExperienceForm() {
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col px-4">
             <div className="flex flex-col gap-8">
                 <div className="flex items-center justify-center relative my-5">
                     <Button as={Link} href="/" size="sm" variant='light' color="primary" isIconOnly={true} className="absolute left-0">
@@ -21,7 +21,7 @@ export default function ExperienceForm() {
             </div>
 
             <div className="mt-8 pb-10">
-                <div className="grid grid-cols-2 gap-x-3 gap-y-6">
+                <div className="flex flex-col sm:grid sm:grid-cols-2 gap-x-3 gap-y-6">
                     <label className="flex flex-col gap-2">
                         <span className="font-medium">Job start date</span>
                         <DatePicker
@@ -72,14 +72,6 @@ export default function ExperienceForm() {
 
                     <span className="flex flex-col gap-2 col-span-2">
                         <span className="font-medium">About Company</span>
-                        {/* <Textarea
-                            rows={6}
-                            size="lg"
-                            radius="sm"
-                            maxLength={450}
-                            variant="bordered"
-                            placeholder="Example: Uber is a transportation and ride-sharing company that connects people, what duties you performed, etc."
-                        /> */}
                         <Editor aria-label="About company text editor" />
                     </span>
 
@@ -93,6 +85,9 @@ export default function ExperienceForm() {
                             aria-label="Skill's gained or used during work in company"
                         />
                     </label>
+                    <Button color="primary" radius="sm" size="lg" className="col-span-2">
+                        <span className="font-medium">Create new experience</span>
+                    </Button>
                 </div>
             </div>
         </div>
