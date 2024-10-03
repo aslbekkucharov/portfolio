@@ -26,7 +26,7 @@ export default function Editor() {
     })
 
     return (
-        <div tabIndex={1} className='group relative shadow-sm border-default-200 border-medium hover:border-default-400 focus-within:!border-default-foreground rounded-small !duration-150 transition-colors'>
+        <div className='group relative shadow-sm border-default-200 border-medium hover:border-default-400 focus-within:!border-default-foreground rounded-small !duration-150 transition-colors'>
             <div className="flex flex-wrap gap-1 p-2 border-b-2 border-default-200 group-hover:border-default-400 group-focus-within:!border-default-foreground !duration-150 transition-colors">
                 {/* <Button size='sm' title='Quote' variant='light' isIconOnly={true}>
                     <HeadingFirstLevel size={20} viewBox='0 0 16 16' />
