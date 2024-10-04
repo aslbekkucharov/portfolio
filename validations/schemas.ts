@@ -14,6 +14,7 @@ const rules = {
     username: yup.string().required('This field is required').min(5, 'Minimum length must be 5 characters'),
     password: yup.string().required('This field is required').min(8, 'Minimum length must be 8 characters'),
     endDate: yup.date().required('End date is required').min(yup.ref('startDate'), "End date can't be before start date"),
+    shortDescription: yup.string().max(1000, 'The 1000 character limit has been reached').required('This field is required'),
     aboutJob: yup.string().matches(/^(?!<p>\s*<\/p>$)/, 'Give some description of what you did at work').required('Give some description of what you did at work'),
 }
 

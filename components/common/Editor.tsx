@@ -8,6 +8,8 @@ import { useEditor, EditorContent } from '@tiptap/react'
 import { BulletList, CodeBlock, Italic, OrderedList, Quote, TextBold, TextStrike } from '@/components/icons'
 import clsx from 'clsx'
 import { ReactNode, useEffect } from 'react'
+import Color from '@tiptap/extension-color'
+import TextStyle from '@tiptap/extension-text-style'
 
 interface Props {
     id?: string
@@ -29,15 +31,15 @@ export default function Editor(props: Props) {
                 editor.commands.clearContent(true)
             }
 
-            console.log(props.value)
-
             props.onBlur?.(event, props.id)
         },
         onUpdate({ editor }) {
             props.onChange(editor.getHTML())
         },
         extensions: [
+            TextStyle,
             StarterKit,
+            Color.configure({ types: ['textStyle'] }),
             Placeholder.configure({
                 placeholder: 'Example: Uber is a transportation and ride-sharing company that connects people, what duties you performed, etc...'
             })
@@ -80,6 +82,15 @@ export default function Editor(props: Props) {
                     </Button>
                     <Button onClick={() => editor?.chain().focus().toggleBlockquote().run()} color='primary' size='sm' title='Quote' variant={editor?.isActive('blockquote') ? 'solid' : 'light'} isIconOnly={true}>
                         <Quote size={20} viewBox='0 0 16 14' />
+                    </Button>
+                    <Button color='primary' size='sm' title='Quote' variant={editor?.isActive('blockquote') ? 'solid' : 'light'} isIconOnly={true}>
+                        <input
+                            type="color"
+                            data-testid="setColor"
+                            value={editor?.getAttributes('textStyle').color}
+                            className='w-6 h-6 border-none border-transparent bg-transparent rounded-lg'
+                            onInput={event => editor?.chain().focus().setColor(event.target.value).run()}
+                        />
                     </Button>
                 </div>
                 <EditorContent editor={editor} />
