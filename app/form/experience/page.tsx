@@ -1,14 +1,38 @@
 'use client'
 
+import { useFormik } from "formik"
 import { Link } from "@nextui-org/link"
 import { Input } from "@nextui-org/input"
 import { Button } from "@nextui-org/button"
-import { DatePicker } from "@nextui-org/date-picker"
 
 import Editor from "@/components/common/Editor"
 import { ChewronRight } from "@/components/icons"
+import { makeSchema } from "@/validations/schemas"
+import { DatePicker } from "@nextui-org/date-picker"
+import { getLocalTimeZone, today } from "@internationalized/date"
 
 export default function ExperienceForm() {
+
+    const { errors, touched, values, isSubmitting, setFieldValue, handleSubmit, handleChange, handleBlur } = useFormik({
+        onSubmit(_, { setSubmitting }) {
+            setTimeout(() => setSubmitting(false), 2000)
+        },
+        initialValues: {
+            skills: '',
+            company: '',
+            aboutJob: '',
+            endDate: null,
+            companyLink: '',
+            startDate: null
+        },
+        validateOnBlur: true,
+        validationSchema: makeSchema(['startDate', 'endDate', 'company', 'companyLink', 'skills', 'aboutJob'])
+    })
+
+    function handleEditorChange(payload: string) {
+        setFieldValue('aboutJob', payload)
+    }
+
     return (
         <div className="flex flex-col px-4">
             <div className="flex flex-col gap-8">
@@ -21,17 +45,25 @@ export default function ExperienceForm() {
             </div>
 
             <div className="mt-8 pb-10">
-                <div className="flex flex-col sm:grid sm:grid-cols-2 gap-x-3 gap-y-6">
+                <form onSubmit={handleSubmit} className="flex flex-col sm:grid sm:grid-cols-2 gap-x-3 gap-y-6">
                     <label className="flex flex-col gap-2">
                         <span className="font-medium">Job start date</span>
                         <DatePicker
                             size="lg"
                             radius="sm"
+                            name="startDate"
                             variant="bordered"
+                            onBlur={handleBlur}
                             hideTimeZone={true}
+                            value={values.startDate}
                             aria-label="Job start date"
                             showMonthAndYearPickers={true}
-                            selectorButtonProps={{ size: 'lg' }}
+                            maxValue={today(getLocalTimeZone())}
+                            selectorButtonProps={{ size: 'md' }}
+                            isInvalid={touched.startDate && !!errors.startDate}
+                            errorMessage={touched.startDate && errors.startDate}
+                            onChange={(value) => setFieldValue('startDate', value)}
+                            color={touched.startDate && !!errors.startDate ? 'danger' : 'default'}
                         />
                     </label>
 
@@ -40,11 +72,19 @@ export default function ExperienceForm() {
                         <DatePicker
                             size="lg"
                             radius="sm"
+                            name="endDate"
                             variant="bordered"
                             hideTimeZone={true}
+                            onBlur={handleBlur}
+                            value={values.endDate}
                             aria-label="Job end date"
                             showMonthAndYearPickers={true}
-                            selectorButtonProps={{ size: 'lg' }}
+                            selectorButtonProps={{ size: 'md' }}
+                            maxValue={today(getLocalTimeZone())}
+                            isInvalid={touched.endDate && !!errors.endDate}
+                            errorMessage={touched.endDate && errors.endDate}
+                            onChange={(value) => setFieldValue('endDate', value)}
+                            color={touched.endDate && !!errors.endDate ? 'danger' : 'default'}
                         />
                     </label>
 
@@ -53,9 +93,16 @@ export default function ExperienceForm() {
                         <Input
                             size="lg"
                             radius="sm"
+                            name="company"
                             variant="bordered"
+                            onBlur={handleBlur}
+                            value={values.company}
+                            onChange={handleChange}
                             aria-label="Company name"
                             placeholder="Example: Uber"
+                            isInvalid={touched.company && !!errors.company}
+                            errorMessage={touched.company && errors.company}
+                            color={touched.company && !!errors.company ? 'danger' : 'default'}
                         />
                     </label>
 
@@ -64,15 +111,30 @@ export default function ExperienceForm() {
                         <Input
                             size="lg"
                             radius="sm"
+                            name="companyLink"
                             variant="bordered"
+                            onBlur={handleBlur}
+                            onChange={handleChange}
+                            value={values.companyLink}
                             aria-label="Company website"
-                            placeholder="Example: https://www.uber.com/"
+                            placeholder="Example: https://www.uber.com"
+                            isInvalid={touched.companyLink && !!errors.companyLink}
+                            errorMessage={touched.companyLink && errors.companyLink}
+                            color={touched.companyLink && !!errors.companyLink ? 'danger' : 'default'}
                         />
                     </label>
 
                     <span className="flex flex-col gap-2 col-span-2">
                         <span className="font-medium">About Company</span>
-                        <Editor aria-label="About company text editor" />
+                        <Editor
+                            id="aboutJob"
+                            onBlur={handleBlur}
+                            value={values.aboutJob}
+                            onChange={handleEditorChange}
+                            aria-label="About company text editor"
+                            isInvalid={touched.aboutJob && !!errors.aboutJob}
+                            errorMessage={touched.aboutJob && errors.aboutJob}
+                        />
                     </span>
 
                     <label className="col-span-2 flex flex-col gap-2">
@@ -80,15 +142,22 @@ export default function ExperienceForm() {
                         <Input
                             size="lg"
                             radius="sm"
+                            name="skills"
                             variant="bordered"
+                            onBlur={handleBlur}
+                            value={values.skills}
+                            onChange={handleChange}
+                            isInvalid={touched.skills && !!errors.skills}
+                            errorMessage={touched.skills && errors.skills}
                             placeholder="Example: PHP, Laravel, Javascript..."
                             aria-label="Skill's gained or used during work in company"
+                            color={touched.skills && !!errors.skills ? 'danger' : 'default'}
                         />
                     </label>
-                    <Button color="primary" radius="sm" size="lg" className="col-span-2">
-                        <span className="font-medium">Create new experience</span>
+                    <Button type='submit' isLoading={isSubmitting} color="primary" radius="sm" size="lg" className="col-span-2">
+                        {isSubmitting ? null : <span className="font-medium">Create new experience</span>}
                     </Button>
-                </div>
+                </form>
             </div>
         </div>
     )

@@ -8,10 +8,6 @@ import { Metadata, Viewport } from 'next'
 import { fontSans } from '@/config/fonts'
 import { siteConfig } from '@/config/site'
 import { Providers } from '@/app/providers'
-import Footer from '@/components/layout/Footer'
-import UserCard from '@/components/user/UserCard'
-import ContentTabs from '@/components/common/ContentTabs'
-import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 import { Metrika } from '@/components/analytics/y-metrika'
 
 export const metadata: Metadata = {

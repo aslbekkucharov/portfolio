@@ -1,12 +1,20 @@
 import * as yup from 'yup'
 
-type RuleField = 'email' | 'username' | 'password' | 'fullname'
+type RuleField = keyof typeof rules
+
+const URL_REGEXP = /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/
 
 const rules = {
+    startDate: yup.date().required('Start date is required'),
+    company: yup.string().required('This field is required'),
     fullname: yup.string().required('This field is required'),
+    companyLink: yup.string().matches(URL_REGEXP, 'Enter valid url!'),
     email: yup.string().required('This field is required').email('Invalid email format'),
+    skills: yup.string().required('Enter skills that you have acquired or used in your work'),
     username: yup.string().required('This field is required').min(5, 'Minimum length must be 5 characters'),
-    password: yup.string().required('This field is required').min(8, 'Minimum length must be 8 characters')
+    password: yup.string().required('This field is required').min(8, 'Minimum length must be 8 characters'),
+    endDate: yup.date().required('End date is required').min(yup.ref('startDate'), "End date can't be before start date"),
+    aboutJob: yup.string().matches(/^(?!<p>\s*<\/p>$)/, 'Give some description of what you did at work').required('Give some description of what you did at work'),
 }
 
 export function makeSchema(fields: RuleField[] | RuleField) {

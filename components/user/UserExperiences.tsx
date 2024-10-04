@@ -26,8 +26,8 @@ function UserExperiences({ className }: Props) {
                     />
                 </h4>
 
-                <Button as={Link} href="/form/experience" size='sm' variant='light' startContent={<Plus size={20} viewBox='0 0 24 24' />}>
-                    <span className='font-medium leading-none'>Add new</span>
+                <Button as={Link} href="/form/experience" size='sm' variant='ghost' startContent={<Plus size={20} viewBox='0 0 24 24' />}>
+                    <span className='font-medium text-sm leading-none'>Add new</span>
                 </Button>
             </div>
 
