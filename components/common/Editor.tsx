@@ -1,15 +1,16 @@
 'use client'
 
+// import { useState } from "react"
+import clsx from 'clsx'
+import Color from '@tiptap/extension-color'
 import { Button } from '@nextui-org/button'
+import { ReactNode, useEffect } from 'react'
 import StarterKit from '@tiptap/starter-kit'
+import TextStyle from '@tiptap/extension-text-style'
 import Placeholder from '@tiptap/extension-placeholder'
 import { useEditor, EditorContent } from '@tiptap/react'
 
 import { BulletList, CodeBlock, Italic, OrderedList, Quote, TextBold, TextStrike } from '@/components/icons'
-import clsx from 'clsx'
-import { ReactNode, useEffect } from 'react'
-import Color from '@tiptap/extension-color'
-import TextStyle from '@tiptap/extension-text-style'
 
 interface Props {
     id?: string
@@ -21,6 +22,8 @@ interface Props {
 }
 
 export default function Editor(props: Props) {
+
+    // const [color, setColor] = useState('#000000')
 
     const editor = useEditor({
         content: '',
@@ -51,6 +54,13 @@ export default function Editor(props: Props) {
             }
         }
     })
+
+    // function handleColorChange(newColor: string) {
+    //     setColor(newColor)
+    //     if (editor) {
+    //         editor.chain().focus().setColor(newColor).run()
+    //     }
+    // }
 
     useEffect(() => {
         if (editor) {
@@ -83,15 +93,14 @@ export default function Editor(props: Props) {
                     <Button onClick={() => editor?.chain().focus().toggleBlockquote().run()} color='primary' size='sm' title='Quote' variant={editor?.isActive('blockquote') ? 'solid' : 'light'} isIconOnly={true}>
                         <Quote size={20} viewBox='0 0 16 14' />
                     </Button>
-                    <Button color='primary' size='sm' title='Quote' variant={editor?.isActive('blockquote') ? 'solid' : 'light'} isIconOnly={true}>
+                    {/* <Button color='primary' size='sm' title='Quote' variant={editor?.isActive('blockquote') ? 'solid' : 'light'} isIconOnly={true}>
                         <input
                             type="color"
-                            data-testid="setColor"
-                            value={editor?.getAttributes('textStyle').color}
+                            value={color}
+                            onInput={(e) => handleColorChange(e.target.value)}
                             className='w-6 h-6 border-none border-transparent bg-transparent rounded-lg'
-                            onInput={event => editor?.chain().focus().setColor(event.target.value).run()}
                         />
-                    </Button>
+                    </Button> */}
                 </div>
                 <EditorContent editor={editor} />
             </div>

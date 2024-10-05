@@ -2,12 +2,12 @@
 
 import { useFormik } from "formik"
 import { Link } from "@nextui-org/link"
-import { Input, Textarea } from "@nextui-org/input"
 import { Button } from "@nextui-org/button"
+import { Input, Textarea } from "@nextui-org/input"
 
+import Editor from "@/components/common/Editor"
 import { ChewronRight } from "@/components/icons"
 import { makeSchema } from "@/validations/schemas"
-import Editor from "@/components/common/Editor"
 
 export default function AboutForm() {
 
