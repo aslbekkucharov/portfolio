@@ -16,12 +16,14 @@ export default function AboutForm() {
             setTimeout(() => setSubmitting(false), 2000)
         },
         initialValues: {
+            role: '',
             skills: '',
+            fullname: '',
             volunteering: '',
             shortDescription: ''
         },
         validateOnBlur: true,
-        validationSchema: makeSchema(['skills', 'shortDescription'])
+        validationSchema: makeSchema(['skills', 'shortDescription', "fullname", 'role'])
     })
 
     function handleEditorChange(payload: string) {
@@ -41,6 +43,43 @@ export default function AboutForm() {
 
             <div className="mt-8 pb-10">
                 <form onSubmit={handleSubmit} className="flex flex-col sm:grid sm:grid-cols-2 gap-x-3 gap-y-6">
+
+                    <label className="flex flex-col gap-2">
+                        <span className="font-medium">Fullname</span>
+                        <Input
+                            size="lg"
+                            radius="sm"
+                            name="fullname"
+                            variant="bordered"
+                            onBlur={handleBlur}
+                            value={values.fullname}
+                            onChange={handleChange}
+                            aria-label="User fullname"
+                            placeholder="Example: John Doe"
+                            isInvalid={touched.fullname && !!errors.fullname}
+                            errorMessage={touched.fullname && errors.fullname}
+                            color={touched.fullname && !!errors.fullname ? 'danger' : 'default'}
+                        />
+                    </label>
+
+                    <label className="flex flex-col gap-2">
+                        <span className="font-medium">Role</span>
+                        <Input
+                            size="lg"
+                            radius="sm"
+                            name="role"
+                            variant="bordered"
+                            onBlur={handleBlur}
+                            value={values.role}
+                            onChange={handleChange}
+                            aria-label="User job role"
+                            placeholder="Example: Software Engineer"
+                            isInvalid={touched.role && !!errors.role}
+                            errorMessage={touched.role && errors.role}
+                            color={touched.role && !!errors.role ? 'danger' : 'default'}
+                        />
+                    </label>
+
                     <label className="flex flex-col gap-2 col-span-2">
                         <span className="font-medium">About yourselft</span>
                         <Textarea
@@ -83,6 +122,7 @@ export default function AboutForm() {
                             variant="bordered"
                             onBlur={handleBlur}
                             value={values.skills}
+                            onChange={handleChange}
                             aria-label="Professionally owned skills/technologies"
                             isInvalid={touched.skills && !!errors.skills}
                             errorMessage={touched.skills && errors.skills}
