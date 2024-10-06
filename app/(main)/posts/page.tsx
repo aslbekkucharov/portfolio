@@ -3,13 +3,14 @@ import { Card } from '@nextui-org/card'
 import { Link } from '@nextui-org/link'
 
 import { Post } from '@/types'
-import { fetcher } from '@/tools/api'
+// import { fetcher } from '@/tools/api'
+import { Button } from '@nextui-org/button'
 import Empty from '@/components/common/Empty'
 
 type PartialPost = Omit<Post, 'content'>
 
 export default async function Posts() {
-    const posts: PartialPost[] = /* (await fetcher('/posts', { cache: 'no-cache' })) || */ []
+    const posts: PartialPost[] = /* (await fetcher('/posts', { cache: 'no-cache' })) || */[]
 
     return (
         <div className={clsx({ 'grid md:grid-cols-2 gap-3': posts.length })}>
@@ -32,7 +33,13 @@ export default async function Posts() {
                     </Card>
                 ))
             ) : (
-                <Empty />
+                <Empty>
+                    <div className="mt-5">
+                        <Button as={Link} href='/form/post' size='sm' variant='ghost' color='primary'>
+                            <span className='font-medium'>Create post</span>
+                        </Button>
+                    </div>
+                </Empty>
             )}
         </div>
     )
