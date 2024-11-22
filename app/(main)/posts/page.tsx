@@ -2,9 +2,10 @@ import clsx from 'clsx'
 import { Card } from '@nextui-org/card'
 import { Link } from '@nextui-org/link'
 
-import { PaginatedResource, Post } from '@/types'
 import { fetcher } from '@/tools/api'
+import { Button } from '@nextui-org/button'
 import Empty from '@/components/common/Empty'
+import { PaginatedResource, Post } from '@/types'
 
 type PartialPost = Omit<Post, 'content'>
 
@@ -34,7 +35,13 @@ export default async function Posts() {
                     </Card>
                 ))
             ) : (
-                <Empty />
+                <Empty>
+                    <div className="mt-5">
+                        <Button as={Link} href='/form/post' size='sm' variant='ghost' color='primary'>
+                            <span className='font-medium'>Create post</span>
+                        </Button>
+                    </div>
+                </Empty>
             )}
         </div>
     )
