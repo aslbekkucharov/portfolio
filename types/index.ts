@@ -14,8 +14,17 @@ export type IWorkExperience = {
 
 export type Post = {
     id: number
+    slug: string
     title: string
-    excerpt: string
     content: string
-    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    shortDescription: string
+}
+
+export interface PaginatedResource<T> {
+    items: T[],
+    size: number
+    page: number
+    total: number
 }
