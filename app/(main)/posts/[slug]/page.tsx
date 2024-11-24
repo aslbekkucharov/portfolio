@@ -10,7 +10,8 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const slug = params.slug
-    const post: Post = await fetcher(`/posts/${slug}`)
+    const response = await fetcher<Post>(`/posts/${slug}`)
+    const post: Post = response.data
 
     return {
         title: post.title,
@@ -19,9 +20,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function PostSingle({ params }: Props) {
-    const post: Post = await fetcher(`/posts/${params.slug}`, {
-        cache: 'no-cache'
-    })
+    const response = await fetcher<Post>(`/posts/${params.slug}`, { cache: 'no-cache' })
+    const post = response.data
 
     return (
         <div className="flex flex-col">

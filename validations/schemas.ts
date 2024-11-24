@@ -28,8 +28,8 @@ export function makeSchema(fields: RuleField[] | RuleField) {
 
         fields.forEach((name) => {
             result[name] = rules[name]
-
         })
+
         return yup.object().shape(result)
     }
 

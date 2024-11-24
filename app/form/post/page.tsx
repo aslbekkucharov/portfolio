@@ -2,18 +2,51 @@
 
 import { useFormik } from "formik"
 import { Link } from "@nextui-org/link"
-import { Input, Textarea } from "@nextui-org/input"
+import { useRouter } from "next/navigation"
 import { Button } from "@nextui-org/button"
+import { Input, Textarea } from "@nextui-org/input"
 
+import { fetcher } from "@/tools/api"
 import Editor from "@/components/common/Editor"
 import { ChewronRight } from "@/components/icons"
 import { makeSchema } from "@/validations/schemas"
 
+interface FormData {
+    postTitle: string
+    postContent: string
+    postShortDescription: string
+}
+
 export default function PostForm() {
 
-    const { errors, touched, values, isSubmitting, setFieldValue, handleSubmit, handleChange, handleBlur } = useFormik({
-        onSubmit(_, { setSubmitting }) {
-            setTimeout(() => setSubmitting(false), 2000)
+    const router = useRouter()
+
+    const { errors, touched, values, isSubmitting, setFieldValue, handleSubmit, handleChange, handleBlur } = useFormik<FormData>({
+        async onSubmit(val: any, { setSubmitting }) {
+
+            const reqBody = JSON.stringify({
+                title: val.postTitle,
+                content: val.postContent,
+                shortDescription: val.postShortDescription
+            })
+
+            try {
+                setSubmitting(true)
+
+                const response = await fetcher('/posts', { method: 'POST', body: reqBody })
+
+                if (response.status === 201) {
+                    router.push('/posts')
+                }
+
+            } catch (error) {
+
+                console.log(error);
+
+            } finally {
+                setSubmitting(false)
+            }
+
         },
         initialValues: {
             postTitle: '',
