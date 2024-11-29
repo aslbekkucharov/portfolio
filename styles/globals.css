@@ -36,7 +36,7 @@ ul {
 pre {
     padding: 15px;
     border-radius: 10px;
-    @apply dark:bg-[#1d1d1d] bg-slate-50 overflow-x-auto
+    @apply dark:bg-[#1d1d1d] bg-slate-50 overflow-x-auto;
 }
 
 pre code {
@@ -48,15 +48,44 @@ pre code {
 code {
     padding: 1.5px 4px;
     border-radius: 5px;
-    @apply dark:bg-[#272727] bg-slate-100
+    @apply dark:bg-[#272727] bg-slate-100;
 }
 
-body::-webkit-scrollbar, .tiptap::-webkit-scrollbar {
+body::-webkit-scrollbar,
+.tiptap::-webkit-scrollbar {
     display: none;
 }
 
 [data-overlay-container] {
-    min-height: 100vh;
     display: flex;
+    min-height: 100vh;
     flex-direction: column;
+}
+
+.Toastify__toast {
+    padding: 0px !important;
+}
+
+.Toastify__toast.Toastify__toast-theme--dark .Toastify__toast-body {
+    color: white;
+}
+
+.Toastify__toast.Toastify__toast-theme--dark .Toastify__close-button:hover {
+    background-color: theme(colors.slate.800);
+}
+
+.Toastify__toast-body {
+    font-size: 14px;
+    color: rgb(15, 15, 15);
+    padding: 6px 0px 6px 10px !important;
+}
+
+.Toastify__close-button {
+    border-radius: 5px;
+    padding: 10px !important;
+    align-self: auto !important;
+}
+
+.Toastify__close-button:hover {
+    background-color: theme(colors.slate.100);
 }

@@ -43,7 +43,7 @@ function ContentTabs() {
             <Tabs classNames={tabsClassnames} selectedKey={pathname} variant="underlined">
                 <Tab key="/" as={Link} href="/" title={tabsTitle.about} />
                 <Tab key="/posts" as={Link} href="/posts" title={tabsTitle.posts} />
-                <Tab key="/signin" as={Link} href="/signin" title={tabsTitle.auth} className='ml-auto' />
+                <Tab key="/signin" as={Link} href="/auth/signin" title={tabsTitle.auth} className='ml-auto' />
             </Tabs>
         </div>
     )

@@ -5,6 +5,8 @@ import clsx from 'clsx'
 import { Suspense } from 'react'
 import { Metadata, Viewport } from 'next'
 
+import 'react-toastify/dist/ReactToastify.css'
+
 import { fontSans } from '@/config/fonts'
 import { siteConfig } from '@/config/site'
 import { Providers } from '@/app/providers'
@@ -28,11 +30,7 @@ export const viewport: Viewport = {
     ],
 }
 
-export default function RootLayout({
-    children,
-}: {
-    children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html suppressHydrationWarning lang="en" className='min-h-screen'>
             <head />

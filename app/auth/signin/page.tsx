@@ -6,8 +6,16 @@ import { Input } from "@nextui-org/input"
 import { Image } from "@nextui-org/image"
 import { Button } from "@nextui-org/button"
 import { makeSchema } from "@/validations/schemas"
+import { fetcher } from "@/tools/api"
+import { useRouter } from "next/navigation"
+import { setCookie } from "@/actions/setCookie"
+import { AuthResponse } from "@/types"
+import { toast } from "react-toastify"
 
 export default function Auth() {
+
+    const router = useRouter()
+
     const { errors, touched, values, handleChange, handleBlur, handleSubmit, isSubmitting } = useFormik({
         initialValues: {
             username: '',
@@ -15,8 +23,34 @@ export default function Auth() {
         },
         validateOnBlur: true,
         validationSchema: makeSchema(['username', 'password']),
-        onSubmit: (values, { setSubmitting }) => {
-            setTimeout(() => setSubmitting(false), 2000)
+        onSubmit: async (values, { setSubmitting }) => {
+            try {
+                setSubmitting(true)
+
+                const response = await fetcher<AuthResponse>('/auth/signin', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        username: values.username,
+                        password: values.password
+                    })
+                })
+
+                if (response.status === 201) {
+                    setCookie(response.data.tokens.access)
+                    router.push('/form/post')
+                }
+
+                if (response.status >= 400 && response.status <= 500) {
+                    // @ts-ignore
+                    toast.error(response.data.message)
+                }
+
+            } catch (error) {
+                console.log(error)
+                toast.error('Что-то пошло не так, мы работаем над исправлением...')
+            } finally {
+                setSubmitting(false)
+            }
         }
     })
 
@@ -33,7 +67,7 @@ export default function Auth() {
                         <p className="text-lg text-slate-500 dark:text-slate-400">Log in to your profile to create or manage your online CV.</p>
                         <p className="text-slate-500">
                             <span>Still don&apos;t have an account?</span>
-                            <Link href="/signup" className="ml-1 text-blue-500">Sign up</Link>
+                            <Link href="/auth/signup" className="ml-1 text-blue-500">Sign up</Link>
                         </p>
                     </div>
 
@@ -83,7 +117,7 @@ export default function Auth() {
             </div>
 
             <div className="max-h-full overflow-hidden hidden lg:block">
-                <Image src="https://rb.gy/pjw6t3" radius="none" />
+                <Image src="https://tinyurl.com/3hxy4yda" radius="none" />
             </div>
         </section>
     )

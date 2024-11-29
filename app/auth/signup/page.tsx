@@ -4,24 +4,53 @@ import { useFormik } from "formik"
 import { Link } from "@nextui-org/link"
 import { Input } from "@nextui-org/input"
 import { Image } from "@nextui-org/image"
+import { useRouter } from "next/navigation"
 import { Button } from "@nextui-org/button"
+
+import { fetcher } from "@/tools/api"
+import { AuthResponse } from "@/types"
+import { setCookie } from "@/actions/setCookie"
 import { makeSchema } from "@/validations/schemas"
+import { toast } from "react-toastify"
 
 export default function Auth() {
 
+    const router = useRouter()
+
     const { touched, errors, values, handleChange, handleBlur, handleSubmit, isSubmitting } = useFormik({
-        initialValues: {
-            email: '',
-            username: '',
-            fullname: '',
-            password: ''
-        },
         validateOnBlur: true,
+        initialValues: { email: '', username: '', fullname: '', password: '' },
         validationSchema: makeSchema(['email', 'password', 'username', 'fullname']),
-        onSubmit: (values, { setSubmitting }) => {
-            setTimeout(() => {
+        onSubmit: async (values, { setSubmitting }) => {
+            try {
+                setSubmitting(true)
+
+                const response = await fetcher<AuthResponse>('/auth/signup', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        email: values.email,
+                        username: values.username,
+                        password: values.password,
+                        fullname: values.fullname
+                    })
+                })
+
+                if (response.status === 201) {
+                    setCookie(response.data.tokens.access)
+                    router.push('/')
+                }
+
+                if (response.status === 400) {
+                    // @ts-ignore
+                    toast.error(response.data.message)
+                }
+
+            } catch (error) {
+                console.log(error)
+                toast.error('Что-то пошло не так, мы уже работаем над исправлением проблемы...')
+            } finally {
                 setSubmitting(false)
-            }, 2000);
+            }
         }
     })
 
@@ -44,7 +73,7 @@ export default function Auth() {
                         <p className="text-lg text-slate-500 dark:text-slate-400 text-center sm:text-left">
                             <span>Create an account on one of the best resume building services</span>
                         </p>
-                        <p className="text-slate-500 text-center sm:text-left">Already have an account? <Link href="/signin" className="ml-1 text-blue-500">Sign in</Link></p>
+                        <p className="text-slate-500 text-center sm:text-left">Already have an account? <Link href="/auth/signin" className="ml-1 text-blue-500">Sign in</Link></p>
                     </div>
 
                     <form onSubmit={handleSubmit} className="flex flex-col gap-5 w-full">
@@ -96,12 +125,12 @@ export default function Auth() {
                         </label>
                         <label className="flex flex-col gap-2">
                             <span className="font-medium">Password</span>
-                            <Input 
-                                size="lg" 
-                                radius="sm" 
-                                type="password" 
+                            <Input
+                                size="lg"
+                                radius="sm"
+                                type="password"
                                 name="password"
-                                variant="bordered" 
+                                variant="bordered"
                                 onBlur={handleBlur}
                                 value={values.password}
                                 onChange={handleChange}
@@ -118,7 +147,7 @@ export default function Auth() {
             </div>
 
             <div className="max-h-full overflow-hidden hidden lg:block">
-                <Image src="https://rb.gy/pjw6t3" radius="none" />
+                <Image src="https://tinyurl.com/3hxy4yda" radius="none" />
             </div>
         </section>
     )

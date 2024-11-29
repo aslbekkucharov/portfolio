@@ -22,9 +22,23 @@ export type Post = {
     shortDescription: string
 }
 
+export interface User {
+    id: number
+    email: string
+    fullname: string
+    username: string
+}
+
 export interface PaginatedResource<T> {
     items: T[],
     size: number
     page: number
     total: number
+}
+
+export type AuthResponse = {
+    user: User
+    tokens: {
+        access: string
+    }
 }
