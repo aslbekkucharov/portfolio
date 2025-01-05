@@ -147,7 +147,7 @@ export default function Auth() {
             </div>
 
             <div className="max-h-full overflow-hidden hidden lg:block">
-                <Image src="https://tinyurl.com/3hxy4yda" radius="none" />
+                <Image src="/images/others/auth-bg.jpg" radius="none" />
             </div>
         </section>
     )

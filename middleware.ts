@@ -5,7 +5,7 @@ export default function middleware(request: NextRequest) {
     const cookiesStore = cookies()
     const token = cookiesStore.get('token')
 
-    if (!token) {
+    if (!token && !request.nextUrl.pathname.startsWith("/auth")) {
         return NextResponse.redirect(new URL('/auth/signin', request.url))
     }
 

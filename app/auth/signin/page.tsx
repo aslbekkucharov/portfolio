@@ -1,20 +1,20 @@
 'use client'
 
 import { useFormik } from "formik"
+import { toast } from "react-toastify"
 import { Link } from "@nextui-org/link"
+import { signIn } from "next-auth/react"
 import { Input } from "@nextui-org/input"
 import { Image } from "@nextui-org/image"
 import { Button } from "@nextui-org/button"
-import { makeSchema } from "@/validations/schemas"
-import { fetcher } from "@/tools/api"
 import { useRouter } from "next/navigation"
-import { setCookie } from "@/actions/setCookie"
-import { AuthResponse } from "@/types"
-import { toast } from "react-toastify"
+
+import { makeSchema } from "@/validations/schemas"
 
 export default function Auth() {
 
     const router = useRouter()
+    const urlRegex = /^(https?:\/\/)?([^\s.]+\.\S{2,}|localhost)(:\d{2,5})?(\/[^\s]*)?$/
 
     const { errors, touched, values, handleChange, handleBlur, handleSubmit, isSubmitting } = useFormik({
         initialValues: {
@@ -27,23 +27,18 @@ export default function Auth() {
             try {
                 setSubmitting(true)
 
-                const response = await fetcher<AuthResponse>('/auth/signin', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        username: values.username,
-                        password: values.password
-                    })
+                const response = await signIn('credentials', {
+                    redirect: false,
+                    username: values.username,
+                    password: values.password
                 })
 
-                if (response.status === 201) {
-                    setCookie(response.data.tokens.access)
-                    router.push('/form/post')
-                }
+                console.log(response?.ok)
 
-                if (response.status >= 400 && response.status <= 500) {
-                    // @ts-ignore
-                    toast.error(response.data.message)
-                }
+                // if (urlRegex.test(response)) {
+                //     const parsedUrl = new URL(response)
+                //     router.push(parsedUrl.pathname === "/" ? "/" : parsedUrl.pathname)
+                // }
 
             } catch (error) {
                 console.log(error)
@@ -117,7 +112,7 @@ export default function Auth() {
             </div>
 
             <div className="max-h-full overflow-hidden hidden lg:block">
-                <Image src="https://tinyurl.com/3hxy4yda" radius="none" />
+                <Image src="/images/others/auth-bg.jpg" radius="none" />
             </div>
         </section>
     )
