@@ -1,10 +1,10 @@
-import NextAuth, { NextAuthOptions } from "next-auth"
+import NextAuth, { NextAuthConfig } from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 
 import { fetcher } from "@/tools/api"
 import { AuthResponse, ErrorResponse } from "@/types"
 
-const authOptions: NextAuthOptions = {
+const authOptions: NextAuthConfig = {
     providers: [
         Credentials({
             credentials: {
@@ -21,12 +21,15 @@ const authOptions: NextAuthOptions = {
                 const data = response.data
 
                 if (response.status !== 200) {
-                    const res = response as unknown as ErrorResponse
-                    return { error: res.data.message }
+                    return null
                 }
 
-                return data as any
-                // FIXME: Find solution for User type error
+                return {
+                    id: data.user.id,
+                    email: data.user.email,
+                    username: data.user.username,
+                    fullname: data.user.fullname,
+                }
             }
         })
     ],
@@ -36,10 +39,15 @@ const authOptions: NextAuthOptions = {
         signIn: '/auth/signin'
     },
 
+    callbacks: {
+        jwt({ token, user }) {
+            if (user) { }
+
+            return token
+        }
+    },
+
     secret: process.env.NEXTAUTH_SECRET
 }
 
-const handler = NextAuth(authOptions)
-
-export const GET = handler
-export const POST = handler
+export const { handlers, auth } = NextAuth(authOptions)

@@ -9,19 +9,16 @@ import { Image } from "@nextui-org/image"
 import { Button } from "@nextui-org/button"
 import { useRouter } from "next/navigation"
 
+import { URL_REGEXP } from "@/config/regexp"
 import { makeSchema } from "@/validations/schemas"
 
 export default function Auth() {
 
     const router = useRouter()
-    const urlRegex = /^(https?:\/\/)?([^\s.]+\.\S{2,}|localhost)(:\d{2,5})?(\/[^\s]*)?$/
 
     const { errors, touched, values, handleChange, handleBlur, handleSubmit, isSubmitting } = useFormik({
-        initialValues: {
-            username: '',
-            password: ''
-        },
         validateOnBlur: true,
+        initialValues: { username: '', password: '' },
         validationSchema: makeSchema(['username', 'password']),
         onSubmit: async (values, { setSubmitting }) => {
             try {
@@ -29,16 +26,15 @@ export default function Auth() {
 
                 const response = await signIn('credentials', {
                     redirect: false,
+                    redirectTo: '/',
                     username: values.username,
                     password: values.password
                 })
 
-                console.log(response?.ok)
-
-                // if (urlRegex.test(response)) {
-                //     const parsedUrl = new URL(response)
-                //     router.push(parsedUrl.pathname === "/" ? "/" : parsedUrl.pathname)
-                // }
+                if (response?.url && URL_REGEXP.test(response?.url)) {
+                    const parsedUrl = new URL(response.url)
+                    router.push(parsedUrl.pathname === "/" ? "/" : parsedUrl.pathname)
+                }
 
             } catch (error) {
                 console.log(error)

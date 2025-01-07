@@ -3,25 +3,26 @@ import { Link } from '@nextui-org/link'
 import { Image } from '@nextui-org/image'
 
 import { DownloadIcon } from '@/components/icons/index'
+import { auth } from '@/config/auth'
 
 type Props = {
     className?: string
 }
 
-function UserCard({ className }: Props) {
+async function UserCard({ className }: Props) {
+
+    const session = await auth()
+
+    console.log(session)
+
     return (
-        <div
-            className={clsx(
-                className,
-                'flex items-center flex-col sm:flex-row gap-5 sm:gap-8',
-            )}
-        >
+        <div className={clsx(className, 'flex items-center flex-col sm:flex-row gap-5 sm:gap-8')}>
             <div className="flex items-center w-[100px] h-[100px] rounded-full overflow-hidden">
                 <Image
                     alt="Aslbek Kucharov's photo against the background of Registan Square"
                     className="scale-[2.5] relative -top-[18px] -right-[4px]"
-                    isBlurred={true}
                     src="/images/aslbekkucharov.jpg"
+                    isBlurred={true}
                 />
             </div>
             <div className="flex flex-col items-center sm:items-start gap-1">
@@ -41,17 +42,11 @@ function UserCard({ className }: Props) {
                 </span>
                 <Link
                     showAnchorIcon
-                    anchorIcon={
-                        <DownloadIcon
-                            className="text-slate-700 dark:text-white"
-                            size={18}
-                            viewBox="0 0 22 22"
-                        />
-                    }
+                    anchorIcon={<DownloadIcon className="text-slate-700 dark:text-white" size={18} viewBox="0 0 22 22" />}
                     className="inline-flex items-center gap-2"
-                    color="foreground"
                     download="aslbekkucharov-resume"
                     href="/aslbekkucharov.pdf"
+                    color="foreground"
                 >
                     <span className="text-slate-700 dark:text-white">
                         Download resume
