@@ -1,10 +1,10 @@
-import NextAuth, { NextAuthConfig } from "next-auth"
+import NextAuth, { NextAuthOptions } from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 
 import { fetcher } from "@/tools/api"
-import { AuthResponse, ErrorResponse } from "@/types"
+import { AuthResponse } from "@/types"
 
-const authOptions: NextAuthConfig = {
+const authOptions: NextAuthOptions = {
     providers: [
         Credentials({
             credentials: {
@@ -20,16 +20,11 @@ const authOptions: NextAuthConfig = {
 
                 const data = response.data
 
-                if (response.status !== 200) {
+                if (response.status !== 201) {
                     return null
                 }
 
-                return {
-                    id: data.user.id,
-                    email: data.user.email,
-                    username: data.user.username,
-                    fullname: data.user.fullname,
-                }
+                return { ...data.user, id: String(data.user) }
             }
         })
     ],

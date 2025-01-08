@@ -1,21 +1,19 @@
 import { JWT } from 'next-auth/jwt'
-import { DefaultSession, DefaultUser } from 'next-auth'
+import NextAuth, { DefaultSession, DefaultUser, User } from 'next-auth'
 
-import { AuthResponse, User as OurUser } from '@/types'
+import type { AuthResponse, User as UserStructure } from '@/types'
 
 declare module 'next-auth' {
     interface Session extends DefaultSession {
-        user: User
+        user: UserStructure
     }
 
-    interface User extends Omit<DefaultUser, 'id'> {
-        id: number
-    }
+    interface User extends UserStructure { }
 }
 
 declare module 'next-auth/jwt' {
     interface JWT {
-        user: User
+        user: UserStructure
         tokens: AuthResponse['tokens']
     }
 }
