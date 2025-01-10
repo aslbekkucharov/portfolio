@@ -1,16 +1,15 @@
 import clsx from 'clsx'
-import { cookies } from 'next/headers'
 import { Link } from '@nextui-org/link'
 import { Image } from '@nextui-org/image'
 
-import { DownloadIcon } from '@/components/icons/index'
 import { getSession } from '@/actions/actions.server'
+import { DownloadIcon } from '@/components/icons/index'
 
 type Props = {
     className?: string
 }
 
-async function UserCard({ className }: Props) {
+export default async function UserCard({ className }: Props) {
 
     const session = await getSession()
 
@@ -55,5 +54,3 @@ async function UserCard({ className }: Props) {
         </div>
     )
 }
-
-export default UserCard

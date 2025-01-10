@@ -44,8 +44,8 @@ export default function PostForm() {
                 console.log(response)
 
                 if (response.status !== 201) {
-                    const error: ErrorResponse = response
-                    toast.error(error.message)
+                    // const error: ErrorResponse = response
+                    // toast.error(error.message)
                 }
 
             } catch (error) {
