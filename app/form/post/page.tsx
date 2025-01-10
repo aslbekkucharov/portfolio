@@ -10,6 +10,8 @@ import { fetcher } from "@/tools/api"
 import Editor from "@/components/common/Editor"
 import { ChewronRight } from "@/components/icons"
 import { makeSchema } from "@/validations/schemas"
+import { toast } from "react-toastify"
+import { ErrorResponse } from "@/types"
 
 interface FormData {
     postTitle: string
@@ -37,6 +39,13 @@ export default function PostForm() {
 
                 if (response.status === 201) {
                     router.push('/posts')
+                }
+
+                console.log(response)
+
+                if (response.status !== 201) {
+                    const error: ErrorResponse = response
+                    toast.error(error.message)
                 }
 
             } catch (error) {

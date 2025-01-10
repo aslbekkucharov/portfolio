@@ -25,6 +25,7 @@ export type Post = {
 export interface User {
     id: number
     email: string
+    image?: string
     fullname: string
     username: string
 }
@@ -44,10 +45,24 @@ export type AuthResponse = {
 }
 
 export interface ErrorResponse {
-    data: {
-        error: string
-        message: string
-        statusCode: number
-    }
+    error: string
+    message: string
+    statusCode: number
+}
+
+export interface SignInPayload {
+    username: string
+    password: string
+}
+
+export interface SignUpPayload {
+    email: string
+    username: string
+    password: string
+    fullname: string
+}
+
+export interface FetcherResponse<T> {
+    data: T
     status: number
 }

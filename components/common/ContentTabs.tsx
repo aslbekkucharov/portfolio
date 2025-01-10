@@ -1,14 +1,23 @@
 'use client'
 
-import React from 'react'
 import Link from 'next/link'
 import { Tabs, Tab } from '@nextui-org/tabs'
 import { usePathname } from 'next/navigation'
+import React, { useEffect, useState } from 'react'
 
-import { LoginIcon, NewsPaperIcon, PersonIcon } from '@/components/icons/index'
+import { AuthResponse } from '@/types'
+import { getSession } from '@/actions/actions.server'
+import { LoginIcon, LogOut, NewsPaperIcon, PersonIcon } from '@/components/icons'
 
-function ContentTabs() {
+export default function ContentTabs() {
     let pathname = usePathname()
+    const [session, setSession] = useState<AuthResponse | null>(null)
+
+    useEffect(() => {
+        getSession().then(res => {
+            setSession(() => res)
+        })
+    }, [])
 
     const tabsClassnames = {
         cursor: 'w-full bg-slate-700 dark:bg-white',
@@ -17,36 +26,55 @@ function ContentTabs() {
         tabList: 'gap-6 w-full relative rounded-none p-0 border-b border-divider',
     }
 
-    const tabsTitle = {
-        about: (
-            <div className="flex items-center space-x-2 text-slate-700 dark:text-white light:group-data-[selected=true]:text-slate-700">
-                <PersonIcon className="text-slate-700 dark:text-white" size={20} viewBox="0 0 24 24" />
-                <span className="font-medium leading-none">About</span>
-            </div>
-        ),
-        posts: (
-            <div className="flex items-center space-x-2 text-slate-700 dark:text-white light:group-data-[selected=true]:text-slate-700">
-                <NewsPaperIcon size={20} viewBox="0 0 24 24" />
-                <span className="font-medium leading-none">Posts</span>
-            </div>
-        ),
-        auth: (
-            <div className="flex items-center space-x-2 text-slate-700 dark:text-white light:group-data-[selected=true]:text-slate-700">
-                <span className="font-medium leading-none">Sign in</span>
-                <LoginIcon size={20} viewBox="0 0 512 512" />
-            </div>
-        ),
-    }
+    const tabTitles = [
+        {
+            key: '/',
+            href: '/',
+            name: 'about',
+            node: (
+                <div className="flex items-center space-x-2 text-slate-700 dark:text-white light:group-data-[selected=true]:text-slate-700">
+                    <PersonIcon className="text-slate-700 dark:text-white" size={20} viewBox="0 0 24 24" />
+                    <span className="font-medium leading-none">About</span>
+                </div>
+            )
+        },
+        {
+            key: '/posts',
+            href: '/posts',
+            name: 'posts',
+            node: (
+                <div className="flex items-center space-x-2 text-slate-700 dark:text-white light:group-data-[selected=true]:text-slate-700">
+                    <NewsPaperIcon size={20} viewBox="0 0 24 24" />
+                    <span className="font-medium leading-none">Posts</span>
+                </div>
+            )
+        },
+        {
+            key: '/auth',
+            name: 'auth',
+            className: 'ml-auto',
+            href: session?.user ? '/auth/logout' : '/auth/signin',
+            node: (
+                session?.user
+                    ?
+                    <div className="flex items-center space-x-2 text-slate-700 dark:text-white light:group-data-[selected=true]:text-slate-700">
+                        <span className="font-medium leading-none">Sign out</span>
+                        <LogOut size={20} viewBox="0 0 1100 1100" />
+                    </div>
+                    :
+                    <div className="flex items-center space-x-2 text-slate-700 dark:text-white light:group-data-[selected=true]:text-slate-700">
+                        <span className="font-medium leading-none">Sign in</span>
+                        <LoginIcon size={20} viewBox="0 0 512 512" />
+                    </div>
+            )
+        }
+    ]
 
     return (
         <div className="flex w-full flex-col">
             <Tabs classNames={tabsClassnames} selectedKey={pathname} variant="underlined">
-                <Tab key="/" as={Link} href="/" title={tabsTitle.about} />
-                <Tab key="/posts" as={Link} href="/posts" title={tabsTitle.posts} />
-                <Tab key="/signin" as={Link} href="/auth/signin" title={tabsTitle.auth} className='ml-auto' />
+                {tabTitles.map(title => <Tab key={title.key} as={Link} href={title.href} title={title.node} className={title.className} />)}
             </Tabs>
         </div>
     )
 }
-
-export default ContentTabs

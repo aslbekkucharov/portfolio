@@ -1,9 +1,10 @@
 import clsx from 'clsx'
+import { cookies } from 'next/headers'
 import { Link } from '@nextui-org/link'
 import { Image } from '@nextui-org/image'
 
 import { DownloadIcon } from '@/components/icons/index'
-import { auth } from '@/config/auth'
+import { getSession } from '@/actions/actions.server'
 
 type Props = {
     className?: string
@@ -11,9 +12,7 @@ type Props = {
 
 async function UserCard({ className }: Props) {
 
-    const session = await auth()
-
-    console.log(session)
+    const session = await getSession()
 
     return (
         <div className={clsx(className, 'flex items-center flex-col sm:flex-row gap-5 sm:gap-8')}>
@@ -28,7 +27,7 @@ async function UserCard({ className }: Props) {
             <div className="flex flex-col items-center sm:items-start gap-1">
                 <span className="flex items-start sm:items-center gap-2">
                     <span className="text-slate-700 dark:text-white  font-semibold sm:font-normal text-lg sm:text-xl leading-1">
-                        Aslbek Kucharov
+                        {session?.user.fullname}
                     </span>
                     <span className="text-slate-700 dark:text-white font-semibold sm:font-normal">
                         |
@@ -38,7 +37,7 @@ async function UserCard({ className }: Props) {
                     </span>
                 </span>
                 <span className="text-slate-500 dark:text-slate-300">
-                    @aslbekkucharov
+                    @{session?.user.username}
                 </span>
                 <Link
                     showAnchorIcon

@@ -1,15 +1,22 @@
 import { Link } from "@nextui-org/link"
 import { Button } from "@nextui-org/button"
 import { Pencil } from "@/components/icons"
+import { getSession } from "@/actions/actions.server"
 
-function UserDescription() {
+async function UserDescription() {
+
+    const session = await getSession()
+
     return (
         <div className="flex flex-col gap-y-2">
             <div className="flex items-center justify-between mb-4">
                 <h3 className="text-slate-700 dark:text-white font-semibold text-lg">About user</h3>
-                <Button as={Link} href="/form/about" isIconOnly={true} title="Edit about information" color="primary" variant='faded' size="sm">
-                    <Pencil size={20} viewBox='0 0 24 24' />
-                </Button>
+                {
+                    session?.user ?
+                        <Button as={Link} href="/form/about" isIconOnly={true} title="Edit about information" color="primary" variant='faded' size="sm">
+                            <Pencil size={20} viewBox='0 0 24 24' />
+                        </Button> : null
+                }
             </div>
 
             <p className="text-slate-700 dark:text-slate-300">
@@ -19,7 +26,7 @@ function UserDescription() {
                 I have been a member of the Telegram support team for more than 3 years.
                 (Google → Telegram Support Force)
             </p>
-        </div>
+        </div >
     )
 }
 

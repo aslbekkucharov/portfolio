@@ -1,18 +1,20 @@
 import clsx from 'clsx'
-import { Card } from '@nextui-org/card'
 import { Link } from '@nextui-org/link'
+import { Button } from '@nextui-org/button'
 
 import { fetcher } from '@/tools/api'
-import { Button } from '@nextui-org/button'
+import { Plus } from '@/components/icons'
 import Empty from '@/components/common/Empty'
 import { PaginatedResource, Post } from '@/types'
-import { DotsVertical, Plus } from '@/components/icons'
+import { getSession } from '@/actions/actions.server'
 
 type Props = {
     list: Post[]
 }
 
-function PostsList(props: Props) {
+async function PostsList(props: Props) {
+    const session = await getSession()
+
     return (
         <>
             {
@@ -27,28 +29,44 @@ function PostsList(props: Props) {
                     </Link>
                 ))
             }
-            <Link href="/form/post" className='p-5 flex flex-col items-center justify-center border border-slate-150 dark:border-theme-dark-400 dark:hover:border-theme-dark-50 hover:border-slate-400 rounded-md transition-colors' >
-                <Plus size={30} viewBox='0 0 24 24' />
-                <span className="text-md text-center">Create new</span>
-            </Link>
+            {
+                session?.user
+                    ?
+                    <Link href="/form/post" className='p-5 flex flex-col items-center justify-center border border-slate-150 dark:border-theme-dark-400 dark:hover:border-theme-dark-50 hover:border-slate-400 rounded-md transition-colors' >
+                        <Plus size={30} viewBox='0 0 24 24' />
+                        <span className="text-md text-center">Create new</span>
+                    </Link>
+                    :
+                    null
+            }
         </>
     )
 }
 
-function PostEmptyContent() {
+async function PostEmptyContent() {
+
+    const session = await getSession()
+
     return (
         <Empty>
             <div className="mt-5">
-                <Button as={Link} href='/form/post' size='sm' variant='ghost' color='primary'>
-                    <span className='font-medium'>Create post</span>
-                </Button >
+                {
+                    session?.user
+                        ?
+                        <Button as={Link} href='/form/post' size='sm' variant='ghost' color='primary'>
+                            <span className='font-medium'>Create post</span>
+                        </Button >
+                        :
+                        null
+                }
             </div >
         </Empty>
     )
 }
 
 export default async function Posts() {
-    const response = await fetcher<PaginatedResource<Post>>('/posts?username=aslbekkucharov', { cache: 'no-cache' }) || []
+    const session = await getSession()
+    const response = await fetcher<PaginatedResource<Post>>(`/posts?username=${session?.user.username}`, { cache: 'no-cache' }) || []
     const posts = response.data.items || []
 
     return (

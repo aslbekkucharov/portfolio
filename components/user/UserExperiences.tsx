@@ -1,17 +1,21 @@
 import clsx from 'clsx'
 import { Link } from '@nextui-org/link'
 import { Image } from '@nextui-org/image'
+import { Button } from '@nextui-org/button'
 
 import { Plus } from '@/components/icons'
 import { workExpirience } from '@/config/experiences'
+import { getSession } from '@/actions/actions.server'
 import ExperienceBlock from '@/components/ExperienceBlock'
-import { Button } from '@nextui-org/button'
 
 type Props = {
     className?: string
 }
 
-function UserExperiences({ className }: Props) {
+async function UserExperiences({ className }: Props) {
+
+    const session = await getSession()
+
     return (
         <div className={clsx(className, 'flex flex-col gap-5')}>
             <div className="flex items-center justify-between">
@@ -26,9 +30,12 @@ function UserExperiences({ className }: Props) {
                     />
                 </h4>
 
-                <Button as={Link} href="/form/experience" size='sm' color='primary' variant='faded' isIconOnly={true}>
-                    <Plus size={20} viewBox='0 0 24 24' />
-                </Button>
+                {
+                    session?.user ?
+                        <Button as={Link} href="/form/experience" size='sm' color='primary' variant='faded' isIconOnly={true}>
+                            <Plus size={20} viewBox='0 0 24 24' />
+                        </Button> : null
+                }
             </div>
 
             <div className='mt-5'>

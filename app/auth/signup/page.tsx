@@ -1,6 +1,7 @@
 'use client'
 
 import { useFormik } from "formik"
+import { toast } from "react-toastify"
 import { Link } from "@nextui-org/link"
 import { Input } from "@nextui-org/input"
 import { Image } from "@nextui-org/image"
@@ -9,9 +10,8 @@ import { Button } from "@nextui-org/button"
 
 import { fetcher } from "@/tools/api"
 import { AuthResponse } from "@/types"
-import { setCookie } from "@/actions/setCookie"
 import { makeSchema } from "@/validations/schemas"
-import { toast } from "react-toastify"
+import { signUp } from "@/actions/actions.server"
 
 export default function Auth() {
 
@@ -25,18 +25,14 @@ export default function Auth() {
             try {
                 setSubmitting(true)
 
-                const response = await fetcher<AuthResponse>('/auth/signup', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        email: values.email,
-                        username: values.username,
-                        password: values.password,
-                        fullname: values.fullname
-                    })
+                const response = await signUp({
+                    email: values.email,
+                    username: values.username,
+                    password: values.password,
+                    fullname: values.fullname
                 })
 
                 if (response.status === 201) {
-                    setCookie(response.data.tokens.access)
                     router.push('/')
                 }
 

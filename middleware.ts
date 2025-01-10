@@ -1,15 +1,16 @@
 import { cookies } from "next/headers"
 import { NextResponse, type NextRequest } from "next/server"
+import { decrypt } from "@/lib/session"
 
-export default function middleware(request: NextRequest) {
-    const cookiesStore = cookies()
-    const token = cookiesStore.get('token')
+export default async function middleware(request: NextRequest) {
+    const cookie = cookies().get('session')?.value
+    const session = await decrypt(cookie!) // FIXME: Fix type error
 
-    if (!token && !request.nextUrl.pathname.startsWith("/auth")) {
+    if (!session?.user && !request.nextUrl.pathname.startsWith("/auth")) {
         return NextResponse.redirect(new URL('/auth/signin', request.url))
     }
 
-    if (token && request.nextUrl.pathname.startsWith("/auth")) {
+    if (session?.user && request.nextUrl.pathname.startsWith("/auth")) {
         return NextResponse.redirect(new URL('/', request.url))
     }
 

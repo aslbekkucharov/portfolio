@@ -3,13 +3,13 @@
 import { useFormik } from "formik"
 import { toast } from "react-toastify"
 import { Link } from "@nextui-org/link"
-import { signIn } from "next-auth/react"
 import { Input } from "@nextui-org/input"
 import { Image } from "@nextui-org/image"
 import { Button } from "@nextui-org/button"
 import { useRouter } from "next/navigation"
 
-import { URL_REGEXP } from "@/config/regexp"
+import { AuthError } from "@/types/error.enum"
+import { signIn } from "@/actions/actions.server"
 import { makeSchema } from "@/validations/schemas"
 
 export default function Auth() {
@@ -24,16 +24,19 @@ export default function Auth() {
             try {
                 setSubmitting(true)
 
-                const response = await signIn('credentials', {
-                    redirect: false,
-                    redirectTo: '/',
-                    username: values.username,
-                    password: values.password
-                })
+                const response = await signIn(values)
 
-                if (response?.url && URL_REGEXP.test(response?.url)) {
-                    const parsedUrl = new URL(response.url)
-                    router.push(parsedUrl.pathname === "/" ? "/" : parsedUrl.pathname)
+                if (response.status !== 200 && response.status !== 201) {
+                    switch (response.status) {
+                        case AuthError.notfound:
+                            toast.error('Пользователь не найден')
+                            break
+                        case AuthError.unauthorized:
+                            toast.error('Введенные данные неверны')
+                            break
+                    }
+                } else {
+                    router.push('/')
                 }
 
             } catch (error) {
